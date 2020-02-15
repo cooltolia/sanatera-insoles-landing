@@ -1,0 +1,20 @@
+mixin specialists(specialists)
+    +b.SECTION.specialists
+        +inner
+            +e.title
+                +title Познакомьтесь с нашими специалистами
+            +e.list
+                for item in specialists
+                    +e.item
+                        
+                        +e.image
+                            +e.PICTURE.picture
+                                source(media='(min-width: 1170px)', srcset="#{item.image_l}")
+                                source(media='(min-width: 768px)', srcset="#{item.image_m}")    
+                                img(src="#{item.image_s}")
+                        +e.info
+                            +e.name #{item.name}
+                            +e.prof #{item.prof}
+                            +e.UL.achieves-list
+                                for achieve in item.achieves
+                                    +e.LI.achieves-item= achieve

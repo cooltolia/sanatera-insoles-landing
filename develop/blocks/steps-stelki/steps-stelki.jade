@@ -1,0 +1,20 @@
+mixin steps-stelki()
+    +b.SECTION.steps-stelki
+        +inner
+            +e.title
+                +title Мы изготовим для вас индивидуальные ортопедические стельки всего за 30 минут! 
+            +e.row
+                +e.col
+                    +e.video-wrapper
+                        +e.video-container
+                +e.col
+                    +e.H3.subtitle Запишитесь на прием к ортопеду прямо сейчас
+                    +e.UL.list
+                        each step in stelkiSteps
+                            +e.LI.item
+                                +e.number
+                                    | #{step.number}. 
+                                | 
+                                | 
+                                | #{step.text}
+            +e.A.button(href='#modal1' data-toggle="modal" data-target="#modal1") Записаться на прием

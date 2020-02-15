@@ -1,0 +1,10 @@
+mixin comments()
+    +b.ARTICLE.comments
+        +inner
+            +e.title
+                +title
+                    | Отзывы счастливых клиентов
+            +e.slider
+                each testimonial in testimonials
+                    +e.slide
+                        +testimonial(testimonial)

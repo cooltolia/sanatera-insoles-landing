@@ -1,0 +1,258 @@
+.advantages-stelki {
+    width: 100%;
+    padding-top: 24px;
+    padding-bottom: 40px;
+
+    font-family: $roboto;
+    color: $darktext;
+}
+
+.advantages-stelki__title {
+    margin-bottom: 30px;
+
+    text-align: center;
+}
+
+.advantages-stelki__blocks {
+    display: block;
+}
+
+.advantages-stelki__block {
+    margin-bottom: 32px;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.advantages-stelki__b-title {
+    margin-bottom: 5px;
+
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.advantages-stelki__b-subtitle {
+    margin-bottom: 15px;
+
+    font-size: 14px;
+}
+
+.advantages-stelki__b-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.advantages-stelki__b-item {
+    position: relative;
+    margin-bottom: 10px;
+    padding-left: 20px;
+
+    font-size: 12px;
+    font-weight: 300;
+
+    &::before {
+        position: absolute;
+        content: '';
+        width: 12px;
+        height: 12px;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+
+        background-image: url('../images/icons/check-round.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+@media #{$tablet} {
+
+    .advantages-stelki__blocks {
+        max-width: 720px;
+        margin: 0 auto;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        background-image: url('../images/stelki/stelka_m.jpg');
+        background-size: 600px 371px;
+        background-position: top 65% center;
+        background-repeat: no-repeat;
+    }
+
+    .advantages-stelki__block {
+        position: relative;
+        width: 300px;
+        flex: 0 0 auto;
+        margin-bottom: 0;
+
+
+        &:nth-child(1) {
+            .advantages-stelki__line {
+                bottom: -40px;
+                left: 23%;
+                width: 85px;
+                transform: rotate(55deg);
+            }
+        }
+
+        &:nth-child(2) {
+            margin-bottom: 290px;
+
+            .advantages-stelki__line {
+                bottom: -30px;
+                left: -150px;
+                width: 150px;
+                transform: rotate(150deg);
+            }
+        }
+
+        &:nth-child(3) {
+            .advantages-stelki__line {
+                top: -42px;
+                right: -87px;
+                width: 220px;
+                transform: rotate(-29deg);
+            }
+        }
+
+        &:nth-child(4) {
+            align-self: flex-end;
+
+            .advantages-stelki__line {
+                top: -20px;
+                left: 30px;
+                width: 45px;
+                transform: rotate(-110deg);
+            }
+        }
+    }
+
+    .advantages-stelki__line {
+        position: absolute;
+        height: 2px;
+
+        background: $themecolor;
+
+        &::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+
+            top: -50%;
+            margin-top: -2px;
+            right: 0;
+            margin-right: -4px;
+
+            border-radius: 50%;
+            background-color: $themecolor;
+            box-shadow: 0px 2px 3px rgba(215, 0, 0, 0.5);
+        }
+    }
+
+}
+
+@media #{$desktop} {
+    .advantages-stelki {
+        padding-top: 60px;
+        padding-top: 80px;
+    }
+
+    .advantages-stelki__title {
+        margin-bottom: 80px;
+    }
+
+    .advantages-stelki__blocks {
+        max-width: 1020px;
+
+        background-image: url('../images/stelki/stelka.jpg');
+        background-size: 792px 384px;
+        background-position: top 60% center;
+    }
+
+    .advantages-stelki__block {
+        width: 450px;
+
+        &:nth-child(1) {
+            .advantages-stelki__line {
+                bottom: -55px;
+                left: 29%;
+                width: 113px;
+            }
+        }
+
+        &:nth-child(2) {
+            margin-bottom: 315px;
+
+            .advantages-stelki__line {
+                bottom: 0px;
+                left: -240px;
+                width: 230px;
+                transform: rotate(155deg);
+            }
+        }
+
+        &:nth-child(3) {
+            .advantages-stelki__line {
+                top: -46px;
+                right: -95px;
+                width: 294px;
+                transform: rotate(-26deg);
+            }
+        }
+
+        &:nth-child(4) {
+            align-self: flex-end;
+
+            .advantages-stelki__line {
+                top: -37px;
+                width: 88px;
+            }
+        }
+    }
+
+    .advantages-stelki__b-title {
+        margin-bottom: 8px;
+
+        font-size: 24px;
+    }
+
+    .advantages-stelki__b-subtitle {
+        margin-bottom: 20px;
+
+        font-size: 18px;
+    }
+
+    .advantages-stelki__b-item {
+        padding-left: 32px;
+        margin-bottom: 20px;
+
+        font-size: 14px;
+
+        &::before {
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+    .advantages-stelki__line {
+
+        &::after {
+            width: 10px;
+            height: 10px;
+
+            margin-top: -3px;
+            right: 0;
+            margin-right: -5px;
+        }
+    }
+}

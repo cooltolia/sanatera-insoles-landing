@@ -1,0 +1,273 @@
+.top-screen-stelki {
+    width: 100%;
+
+    margin: 0 auto;
+    padding-top: 36px;
+    padding-bottom: 12px;
+
+    font-family: $roboto;
+    color: $lighttext;
+
+    background-image: url('../images/stelki/top-screen/bg_s.jpg');
+    background-size: cover;
+    background-position: center center;
+}
+
+.top-screen-stelki__title {
+    max-width: 360px;
+    margin: 0 auto 40px;
+
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.top-screen-stelki__appeal {
+    margin: 0 auto;
+
+    text-align: center;
+}
+
+.top-screen-stelki__appeal-content {
+    margin-bottom: 24px;
+}
+
+.top-screen-stelki__appeal-title {
+    margin-bottom: 2px;
+
+    font-size: 20px;
+    line-height: 1.2;
+    font-weight: 500;
+}
+
+.top-screen-stelki__appeal-text {
+    margin: 0;
+
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.001em;
+
+    .striked {
+        position: relative;
+
+        &::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            top: 50%;
+            transform: translateY(-50%);
+
+            background-color: $themecolor;
+        }
+    }
+
+    .marked {
+        font-weight: 900;
+        color: #59b100;
+    }
+}
+
+.top-screen-stelki__bonus {
+    position: relative;
+    margin: 0;
+    margin-top: 50px;
+
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.2;
+
+    &::before {
+        content: '+';
+        position: absolute;
+        top: -45px;
+        left: 50%;
+        transform: translateX(-50%);
+
+        font-size: 36px;
+        font-weight: 400;
+    }
+}
+
+.top-screen-stelki__button {
+    @include btn-theme();
+    padding: 11px 10px;
+    width: 260px;
+    margin: 0 auto 24px;
+
+    font-size: 16px;
+    font-weight: 900;
+    color: $lighttext;
+    text-transform: uppercase;
+    border-radius: 7px;
+}
+
+.top-screen-stelki__footnote {
+    width: 200px;
+    margin: 0 auto;
+
+    font-size: 8px;
+    font-weight: 300;
+}
+
+@media #{$tablet} {
+    .top-screen-stelki {
+        padding-top: 40px;
+        padding-bottom: 36px;
+        max-width: none;
+
+        background-image: url('../images/stelki/top-screen/bg.jpg');
+    }
+
+    .top-screen-stelki__inner {
+        padding: 0 40px;
+    }
+
+    .top-screen-stelki__title {
+        max-width: 400px;
+        margin: 0 40px 36px;
+
+        font-size: 26px;
+        text-align: left;
+    }
+
+    .top-screen-stelki__appeal {
+        // max-width: 750px;
+        margin-left: 0;
+        padding: 0 40px;
+    }
+
+    .top-screen-stelki__appeal-content {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: flex-start;
+        align-items: flex-end;
+
+        margin-bottom: 40px;
+    }
+
+    .top-screen-stelki__appel-column {
+        width: auto;
+        text-align: left;
+        margin-right: 25px;
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
+    .top-screen-stelki__appeal-title {
+        text-align: left;
+        margin-bottom: 5px;
+    }
+
+    .top-screen-stelki__appeal-text {
+        font-size: 16px;
+        text-align: left;
+    }
+
+    .top-screen-stelki__bonus {
+        padding: 0;
+        margin: 0;
+        padding-left: 70px;
+
+        font-size: 16px;
+        text-align: left;
+
+        &::before {
+            left: 24px;
+            top: 50%;
+            transform: translateX(0);
+            transform: translateY(-50%);
+        }
+    }
+
+    .top-screen-stelki__button {
+        margin-left: 0;
+        margin-bottom: 18px;
+    }
+
+    .top-screen-stelki__footnote {
+        width: 200px;
+        margin-left: 0;
+
+        text-align: left;
+    }
+}
+
+@media #{$desktop} {
+    .top-screen-stelki {
+        padding-top: 72px;
+        padding-bottom: 60px;
+    }
+
+    .top-screen-stelki__title {
+        max-width: 600px;
+        margin-bottom: 60px;
+
+        font-size: 40px;
+    }
+
+    .top-screen-stelki__appeal {
+        align-items: flex-start;
+    }
+
+    .top-screen-stelki__appeal-content {
+        margin-bottom: 60px;
+        justify-content: flex-start;
+    }
+
+    .top-screen-stelki__appeal-title {
+        font-size: 36px;
+    }
+
+    .top-screen-stelki__appeal-text {
+        font-size: 26px;
+        line-height: 1.2;
+    }
+
+    .top-screen-stelki__bonus {
+        top: -15px;
+        padding: 0;
+        padding-left: 130px;
+        font-size: 24px;
+        line-height: 1.2;
+
+        &::before {
+            left: 44px;
+            font-size: 48px;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+
+            width: 120px;
+            height: 130px;
+            transform: rotate(105deg);
+            bottom: -125px;
+            left: 17px;
+
+            background-image: url('../images/stelki/arrow.svg');
+            background-size: contain;
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
+    }
+
+    .top-screen-stelki__button {
+        width: 386px;
+        padding: 12px 20px;
+        margin-bottom: 11px;
+
+        font-size: 28px;
+    }
+
+    .top-screen-stelki__footnote {
+        width: 300px;
+
+        font-size: 12px;
+    }
+}

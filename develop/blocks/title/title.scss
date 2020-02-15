@@ -1,0 +1,47 @@
+.title {
+    position: relative;
+    display: inline-block;
+    margin: 0;
+
+    font-family: $roboto;
+    color: $darktext;
+    font-size: 18px;
+    font-weight: 400;
+
+    &--light {
+        color: $lighttext;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        width: 120px;
+        height: 2px;
+        bottom: -5px;
+        left: 50%;
+        transform: translateX(-50%);
+
+        background-color: $themecolor;
+    }
+}
+
+@media #{$tablet} {
+    // .title {
+    //     font-size: 22px;
+
+    //     &::after {
+    //         width: 160px;
+    //     }
+    // }
+}
+
+@media #{$desktop} {
+    .title {
+        font-size: 24px;
+
+        &::after {
+            width: 180px;
+            bottom: -5px;
+        }
+    }
+}

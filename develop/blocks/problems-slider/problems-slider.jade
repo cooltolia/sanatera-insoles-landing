@@ -1,0 +1,30 @@
+mixin problems-slider(data)
+    +b.SECTION.problems-slider
+        +inner
+            +e.title
+                +title !{data.title}
+            +e.slider
+                -var arr = data.list;
+                -var sets = [];
+                -var chunks = arr.length / 2;
+                -for (var i = 0, j = 0; i < chunks; i++, j += 2) {
+                    -sets[i] = arr.slice(j, j + 2);
+                -}
+                +e.slider-inner
+                    for slide in sets
+                        +e.slide
+                            each item in slide
+                                +e.item
+                                    +e.image
+                                        img(src=item.image)
+                                    +e.text !{item.text}
+                                    +e.P.description !{item.description}
+            +e.modal.modal.fade#problems-description(tabindex='-1', role='dialog', aria-labelledby='modal')
+                .modal-dialog(role='document')
+                    .modal-content
+                        .modal-header
+                            button.close(type='button', data-dismiss='modal', aria-label='Close')
+                                span(aria-hidden='true') ×
+                            +e.description-modal-title
+                        .modal-body
+                            +e.P.description-modal-text 

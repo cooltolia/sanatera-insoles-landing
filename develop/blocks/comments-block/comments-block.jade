@@ -1,0 +1,68 @@
+mixin comments-block()
+    +b.SECTION.comments-block
+        +e.H3.title Отзывы о центре от посетителей сайта
+        +e.inner
+            //- basik template for demonstrative purposess. 
+            //- for production see social-comments.jade/site-comments.jade
+            +e.comment
+                +e.content
+                    +e.content-inner
+                        +e.c-title Заголовок1
+                        +e.P.text
+                            | Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto voluptatibus sed accusantium deserunt quam, fuga blanditiis delectus voluptate quae adipisci 
+                +e.footer
+                    +e.col
+                        +e.ava
+                            img(src='/images/comments/ava.jpg')
+                    +e.col
+                        +e.author-name Егор Павлович
+                        +e.author-prof Блогерша
+                        +e.A.author-link.--vk(href='#')
+                    +e.col
+                        +e.date 27.12.2015
+            +e.comment
+                +e.video
+                    +e.video-inner
+                +e.footer
+                    +e.col
+                        +e.ava
+                            img(src='/images/comments/ava.jpg')
+                    +e.col
+                        +e.author-name Егор Павлович
+                        +e.author-prof Блогерша
+                        +e.A.author-link.--youtube(href='#')
+                    +e.col
+                        +e.date 27.12.2015
+            +e.comment
+                +e.content
+                    +e.content-inner
+                        +e.c-title Заголовок3
+                        +e.P.text
+                            | Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto voluptatibus sed accusantium deserunt quam, fuga blanditiis delectus voluptate quae adipisci tempore? Ab esse laudantium dolor nobis repudiandae? Delectus odio, at sed molestiae similique impedit voluptate! Dolores numquam, id doloribus tenetur recusandae sint qui itaque nulla dolorum. Nobis ducimus eos esse.
+                +e.footer
+                    +e.col
+                        +e.ava
+                            img(src='/images/comments/ava.jpg')
+                    +e.col
+                        +e.author-name Егор Павлович
+                        +e.author-prof Блогерша
+                        +e.A.author-link.--instagram(href='#')
+                    +e.col
+                        +e.date 27.12.2015
+            +e.comment
+                +e.content
+                    +e.content-inner
+                        +e.c-title Заголовок4
+                        +e.P.text
+                            | Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto voluptatibus sed accusantium deserunt quam, fuga blanditiis delectus voluptate quae adipisci tempore? Ab esse laudantium dolor nobis repudiandae? Delectus odio, at sed molestiae similique impedit voluptate! Dolores numquam, id doloribus tenetur recusandae sint qui itaque nulla dolorum. Nobis ducimus eos esse.
+                +e.footer
+                    +e.col
+                        +e.ava
+                            img(src='/images/comments/ava.jpg')
+                    +e.col
+                        +e.author-name Егор Павлович
+                        +e.author-prof Блогерша
+                        +e.A.author-link.--twitter(href='#')
+                    +e.col
+                        +e.date 27.12.2015
+        +e.BUTTON.button(type='button') Показать еще отзывы

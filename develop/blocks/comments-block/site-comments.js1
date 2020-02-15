@@ -1,0 +1,100 @@
+;(function () {
+
+    var position = 0,
+        quantity = 4,
+        type = 'site',
+        wrapper = $('.site-comments__inner');
+
+    $(function () {
+
+        if ($(window).width() < 480) {
+            quantity = 2;
+        }
+
+        $.get("ajax_comments.php", { quantity: quantity, position: position, type: type }, function (data) {
+
+            var response = JSON.parse(data),
+                comments = response.items;
+
+            for (var comment in comments) {
+                var node;
+                var commentParams = comments[comment];
+                var dto = generateDTO(commentParams);
+
+                node = generateTextComment(dto);
+
+                wrapper.append(node);
+            };
+
+            position += quantity;
+
+        });
+
+    });
+
+    $('.site-comments__button').click(function (e) {
+        e.preventDefault();
+        quantity = 4;
+        debugger;
+        if ($(window).width() < 480) {
+            quantity = 2;
+        }
+
+        $.get("ajax_comments.php", { quantity: quantity, position: position, type: type }, function (data) {
+
+            var response = JSON.parse(data),
+                isLast = response.is_last,
+                comments = response.items;
+
+            wrapper.empty();
+
+            for (var comment in comments) {
+                var node;
+                var commentParams = comments[comment];
+                var dto = generateDTO(commentParams);
+
+                node = generateTextComment(dto);
+                
+                wrapper.append(node);
+            };
+
+            position += quantity;
+
+            if (isLast) {
+                position = 0;
+            }
+
+        });
+    });
+
+    var generateTextComment = function (dto) {
+
+        return '<div class="site-comments__comment">' +
+            '<div class="site-comments__content">' +
+            '<div class="site-comments__content-inner">' +
+            '<div class="site-comments__c-title">' + dto.title +
+            '</div><p class="site-comments__text">' + dto.text +
+            '</p></div></div>' +
+            '<div class="site-comments__footer">' +
+            '<div class="site-comments__author">' + dto.author + '</div></div>'
+
+    }
+
+    var generateDTO = function (object) {
+        var dto = {};
+
+        dto.title = object.title || '';
+        dto.text = object.text || '';
+        dto.author = object.author || '';
+
+        return dto;
+    }
+
+})();
+
+
+
+
+
+
+

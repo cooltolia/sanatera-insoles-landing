@@ -1,0 +1,112 @@
+$phablet: '(min-width: 480px) and (max-width: 767px)';
+$tablet: '(min-width: 768px)';
+$desktop: '(min-width: 1240px)';
+$base-font-size: 16px;
+
+$roboto: Roboto, Helvetica, Arial, sans-serif;
+$carolina: Carolina, cursive;
+$opsans: 'Open Sans', Helvetica, Arial, sans-serif;
+$ubuntu: 'Ubuntu', Helvetica, Arial, sans-serif;
+
+$themecolor: #d60724;
+$darktext: #000;
+$mediumtext: #222;
+$softdarktext: #353535;
+$lighttext: #ffffff;
+
+@mixin btn-theme($themecolor: $themecolor, $boxshadow: true) {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: $lighttext;
+    font-family: $roboto;
+    font-weight: 400;
+
+    border-radius: 50px;
+    background-color: $themecolor;
+    cursor: pointer;
+    text-decoration: none;
+    border: 1px solid transparent;
+
+    transition: all 300ms ease;
+
+    @if ($boxshadow) {
+        box-shadow: 5px 2px 27px rgba(215, 0, 0, 0.5);
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+        text-decoration: none;
+        color: $lighttext;
+        background-color: darken($themecolor, 10%);
+    }
+
+    &:active {
+        background-color: darken($themecolor, 20%);
+    }
+}
+
+@mixin btn-light {
+    position: relative;
+    display: flex;
+    justify-content: center;
+
+    align-items: center;
+    color: $darktext;
+    font-family: $opsans;
+    font-weight: 400;
+    border-radius: 50px;
+
+    border: 1px solid transparent;
+    background-color: #f2f2f2;
+    cursor: pointer;
+    text-decoration: none;
+
+    box-shadow: 3px 5px 27px 2px rgba(white, 0.29);
+    transition: all 300ms ease;
+
+    &:hover,
+    &:active,
+    &:focus {
+        text-decoration: none;
+        color: $darktext;
+        background-color: darken(#f2f2f2, 10%);
+    }
+
+    &:active {
+        background-color: darken(#f2f2f2, 20%);
+    }
+}
+
+@mixin btn-reset {
+    padding: 0;
+    margin: 0;
+    background: none;
+    border: none;
+    outline: none;
+}
+
+@mixin visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
+@mixin image() {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 100%;
+    margin: 0 auto;
+}

@@ -1,0 +1,49 @@
+@import 'includes/fonts.scss';
+@import 'variables.scss';
+@import 'includes/normalize.scss';
+@import 'sprite.scss';
+
+@import '../blocks/**/*';
+
+html,
+body {
+    height: 100%;
+}
+body {
+    // padding-top: 60px;
+
+    &::after {
+        content: '';
+        position: fixed;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+
+        backdrop-filter: blur(3px);
+        opacity: 0;
+
+        transition: opacity 300ms ease;
+    }
+
+    &.menu-opened {
+        overflow: hidden;
+
+        &::after {
+            z-index: 1;
+            opacity: 1;
+        }
+    }
+}
+// @media #{$tablet} {
+//     body {
+//         padding-top: 69px;
+//     }
+// }
+
+// @media #{$desktop} {
+//     body {
+//         padding-top: 94px;
+//     }
+// }

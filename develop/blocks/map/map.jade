@@ -1,0 +1,28 @@
+mixin map()
+    +b.map
+        +e.fallback
+        +e.inner#map
+            +e.info
+                +e.info-row
+                    +e.info-icon.--address
+                        include ../../../app/images/point.svg
+                    +e.info-title Адрес
+                    +e.info-value г. Санкт-Петербург, ст.м. Маяковская, Стремянная 12, вход со двора Невский проспект 61
+                +e.info-row 
+                    +e.info-icon.--time
+                        include ../../../app/images/time.svg
+                    +e.info-title График работы
+                    +e.info-value Ежедневно с 8:00 до 22:00
+                +e.info-row 
+                    +e.info-icon.--contacts
+                        include ../../../app/images/phone.svg
+                    +e.info-title Контакты
+                    +e.A.info-value.--link(href='tel:+7 (812) 421-74-99') +7 (812) 421-74-99
+        //- +e.FORM.form(method='post')
+        //-     +e.form-title Остались еще вопросы?
+        //-     +e.inputs
+        //-         +e.INPUT.input(type='tel' name='map_tel' placeholder='+7 (___) ___ __ __' data-inputmask="'mask': '+7 (999) 999 99 99'" required)
+        //-         +e.TEXTAREA.textarea(type='text' name='map_textarea' placeholder='Ваш вопрос' required)
+        //-         +e.BUTTON.submit(type='submit') Задайте
+        //-         +e.INPUT.a-checkbox(type='checkbox' id='ma-checkbox' name='ma-checkbox' required)  
+        //-         +e.LABEL.agreement(for='ma-checkbox') Подтверждаю свое согласие на обработку персональных данных (мы не передаем персональную информацию третьим лицам)*

@@ -1,0 +1,17 @@
+mixin top-screen-stelki(link = false)
+    +b.SECTION.top-screen-stelki
+        +inner
+            +e.H1.title Как избавиться от 19 проблем с помощью индивидуальных ортопедических стелек?
+            +e.appeal
+                +e.appeal-content
+                    +e.appeal-column
+                        +e.appeal-title Акция!
+                        +e.P.appeal-text Первая пара <span class='striked'>2980</span> <span class='marked'>1490</span>&nbsp;руб. <br>Вторая пара по тому же слепку <span class='marked'>990</span>&nbsp;руб.
+                    +e.appeal-column
+                        +e.P.bonus Бесплатная консультация <br>ортопеда в подарок!
+                if (link)
+                    +e.A.button(href='#') Пройти тест
+                else   
+                    +e.A.button(href='#modal1' data-toggle="modal" data-target="#modal1" data-button='Узнать подробнее') Узнать подробнее
+                
+                +e.footnote *В связи с большим количеством пациентов, просим вас записываться на изготовление стелек заранее

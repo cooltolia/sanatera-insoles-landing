@@ -1,0 +1,140 @@
+.main-features {
+    width: 100%;
+    padding: 10px 0 40px;
+
+    font-family: $roboto;
+    color: $darktext;
+}
+
+.main-features__title {
+    @include visually-hidden();
+}
+
+.main-features__list {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: stretch;
+    justify-content: center;
+
+    max-width: 380px;
+    margin: 0 auto;
+}
+
+.main-features__item {
+    width: 33%;
+    min-width: 150px;
+    max-width: 50%;
+    flex: 1 1 auto;
+    padding: 0 5px;
+    margin-top: 24px;
+
+    display: flex;
+    flex-flow: column nowrap;
+
+    &.fouritems {
+        width: 50%;
+
+        // &:nth-child(-n+3) {
+        //     margin-top: 0;
+        // }
+    }
+}
+
+.main-features__image {
+    position: relative;
+    max-width: 90px;
+    margin: 0 auto 15px;
+
+    img {
+        display: block;
+        width: auto;
+        max-width: 100%;
+        height: auto;
+        margin: 0 auto;
+    }
+}
+
+
+.main-features__subtitle {
+    margin-bottom: 15px;
+
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+
+    &:empty {
+        height: 0;
+        background-color: red;
+    }
+}
+
+.main-features__text {
+    margin-top: 0;
+
+    font-size: 12px;
+    font-weight: 400;
+    text-align: center;
+    line-height: 1.2;
+}
+
+@media #{$tablet} {
+    .main-features__list {
+        max-width: 768px;
+        padding: 0 40px;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+    }
+
+    .main-features__item {
+        padding: 0 10px;
+        
+        &.fouritems {
+            width: 25%;
+        }
+    }
+
+    .main-features__image {
+        max-width: 105px;
+    }
+
+}
+
+@media #{$desktop} {
+    .main-features__list {
+        max-width: 1180px;
+        padding: 0;
+    }
+
+    .main-features__item {
+        margin-top: 40px;
+        padding: 0;
+        margin-right: 75px;
+        
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
+    .main-features__image {
+        max-width: 160px;
+        height: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 24px;
+    }
+
+    .main-features__subtitle {
+        margin-bottom: 6px;
+
+        font-size: 22px;
+    }
+
+    .main-features__text {
+        font-size: 18px;
+
+        &.bigtext {
+            font-size: 24px;
+        }
+    }
+}

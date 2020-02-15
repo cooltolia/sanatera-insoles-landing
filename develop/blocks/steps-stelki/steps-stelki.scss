@@ -1,0 +1,178 @@
+.steps-stelki {
+    width: 100%;
+    padding-top: 24px;
+    padding-bottom: 40px;
+
+    color: $lighttext;
+    font-family: $roboto;
+    
+    background-color: #656565;
+    background-image: url('../images/stelki/stelki-steps_bg_s.jpg');
+    background-size: cover;
+}
+
+.steps-stelki__title {
+    margin-bottom: 30px;
+
+    text-align: center;
+
+    .title {
+        color: $lighttext;
+    }
+}
+
+.steps-stelki__row {
+    max-width: 360px;
+    margin: 0 auto 24px;
+}
+
+.steps-stelki__video-wrapper {
+    position: relative;
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+.steps-stelki__video-container {
+    width: 100%;
+    padding-top: 56.25%;
+    
+    //temp
+    background-image: url('../images/stelki/video__poster.jpg');
+    background-size: cover;
+}
+
+.steps-stelki__subtitle {
+    margin: 0;
+    margin-bottom: 20px;
+
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.steps-stelki__list {
+    position: relative;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+
+    &::after {
+        position: absolute;
+        z-index: -1;
+        content: '';
+        width: 1px;
+        height: calc(100% - 70px);
+        top: 35px;
+        left: 50%;
+
+        background-color: $themecolor;
+    }
+}
+
+.steps-stelki__item {
+    position: relative;
+    margin-bottom: 10px;
+
+    font-size: 16px;
+    font-weight: 300;
+    color: $lighttext;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.steps-stelki__number {
+    display: inline-block;
+    
+    font-weight: 900;
+}
+
+.steps-stelki__button {
+    @include btn-theme;
+    width: 240px;
+    padding: 11px;
+    margin: 0 auto;
+
+    font-size: 14px;
+    font-weight: 900;
+    text-transform: uppercase;
+
+    border-radius: 7px;
+    box-shadow: 3px 1px 16px rgba(215, 0, 0, 0.5);
+}
+
+@media #{$tablet} {
+    .steps-stelki {
+        background-image: url('../images/stelki/stelki-steps_bg_m.jpg');
+    }
+
+    .steps-stelki__row {
+        max-width: 720px;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 40px;
+    }
+
+    .steps-stelki__col {
+        width: 47.5%;
+        flex: 0 0 auto;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+    }
+
+    .steps-stelki__video-wrapper {
+        margin: 0;
+    }
+
+    .steps-stelki__button {
+        width: 260px;
+    }
+}
+
+@media #{$desktop} {
+    .steps-stelki {
+        padding-top: 60px;
+        padding-bottom: 80px;
+
+        background-image: url('../images/stelki/stelki-steps_bg_l.jpg');
+    }
+
+    .steps-stelki__title {
+        margin-bottom: 60px;
+    }
+
+    .steps-stelki__row {
+        max-width: 1200px;
+        margin-bottom: 60px;
+    }
+
+    .steps-stelki__col {
+        // width: 570px;
+    }
+
+    .steps-stelki__subtitle {
+        margin-bottom: 25px;
+
+        font-size: 24px;
+    }
+
+    .steps-stelki__item {
+        margin-bottom: 20px;
+
+        font-size: 18px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    .steps-stelki__button {
+        width: 420px;
+        padding: 16px;
+
+        font-size: 24px;
+
+        box-shadow: 5px 2px 27px rgba(215, 0, 0, 0.5);
+    }
+}

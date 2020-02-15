@@ -1,0 +1,158 @@
+.testimonial {
+
+    &__video {
+        margin: 0 50px;
+
+        background-image: url('../images/comments/video.jpg');
+        background-size: cover;
+
+        &::before {
+            content: '';
+            position: relative;
+            display: table;
+            padding-top: 56.25%;
+        }
+    }
+    
+    &__image {
+        padding: 0 50px;
+        max-width: 300px;
+        margin: 0 auto 18px;
+
+        img {
+            @include image;
+        }
+    }
+
+    &__title {
+        margin: 0 0 5px;
+
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    &__text {
+        margin-bottom: 20px;
+
+        font-size: 12px;
+        font-weight: 300;
+
+        p {
+            margin: 0 0 5px;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    &__footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__name {
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    &__status {
+        font-size: 10px;
+        font-weight: 300;
+    }
+
+    &__link {
+        margin-left: 20px;
+        flex: 0 0 auto;
+
+        width: 22px;
+        height: 22px;
+
+        background-size: cover;
+
+        &.instagram {
+            background-image: url('../images/icons/instagram_hover.svg');
+        }
+
+        &.vk {
+            background-image: url('../images/icons/vk_hover.svg');
+        }
+
+        &.facebook {
+            background-image: url('../images/icons/facebook_hover.svg');
+        }
+    }
+}
+
+@media #{$tablet} {
+    .testimonial {
+        display: flex;
+
+        &__video {
+            width: 100%;
+            max-width: 396px;
+            margin: 0 auto;
+        }
+
+        &__image {
+            flex: 0 0 auto;
+            order: 1;
+            padding: 0;
+            width: 200px;
+            max-width: none;
+            margin: 0;
+        }
+
+        &__content {
+            width: 50%;
+            flex: 1 1 auto;
+            padding-right: 40px;
+            display: flex;
+            flex-flow: column nowrap;
+        }
+
+        &__footer {
+            margin-top: auto;
+        }
+    }
+}
+
+@media #{$desktop} {
+    .testimonial {
+        &__video {
+            max-width: 712px;
+        }
+
+        &__image {
+            width: 360px;
+        }
+
+        &__content {
+            padding-right: 60px;
+        }
+
+        &__title {
+            margin-bottom: 10px;
+
+            font-size: 24px;
+        }
+
+        &__text {
+            font-size: 18px;
+        }
+
+        &__name {
+            font-size: 24px;
+        }
+
+        &__status {
+            font-size: 18px;
+        }
+
+        &__link {
+            width: 30px;
+            height: 30px;
+        }
+    }
+}

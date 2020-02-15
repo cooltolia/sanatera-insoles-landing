@@ -1,0 +1,242 @@
+.modal {
+    font-family: $roboto;
+}
+
+.modal-dialog {
+    width: 80%;
+    max-width: 480px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.modal-header {
+    border: none;
+
+    .close {
+        position: absolute;
+        z-index: 99;
+        top: 10px;
+        right: 25px;
+        font-size: 30px;
+        font-weight: 100;
+
+        appearance: none;
+        padding: 0;
+        cursor: pointer;
+        background: 0 0;
+        border: 0;
+
+        color: #000;
+        text-shadow: 0 1px 0 #fff;
+        opacity: 0.2;
+    }
+}
+
+.modal-body {
+    padding: 0;
+}
+
+.modal-content {
+    border: none;
+    background-color: #fff;
+}
+
+.modal-form {
+    padding: 35px 20px 25px;
+    max-width: 420px;
+    margin: 0 auto;
+}
+
+.modal-input-row {
+    margin-bottom: 30px;
+}
+
+.modal-label {
+    margin-bottom: 10px;
+
+    color: #131313;
+    font-size: 15px;
+    font-weight: 300;
+}
+
+.modal-input {
+    width: 100%;
+    padding: 15px;
+    border-radius: 3px;
+    border: 1px solid #dcdcdc;
+    background-color: #fff;
+
+    color: #131313;
+    font-size: 15px;
+    font-weight: 300;
+
+    &::placeholder {
+        color: #1f1f1f;
+    }
+}
+
+.modal-submit {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+
+    padding: 9px 15px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 400;
+    margin: 0 auto;
+
+    border-radius: 50px;
+    border: 1px solid $themecolor;
+
+    background-color: $themecolor;
+
+    transition: all 300ms ease;
+
+    &:hover {
+        color: $darktext;
+        background-color: transparent;
+    }
+}
+
+body.modal-open {
+    overflow: auto !important;
+    padding-right: 0 !important;
+}
+
+.success-modal.modal {
+
+    .modal-dialog {
+        max-width: 920px;
+    }
+
+    .modal-header {
+        padding: 0;
+    }
+
+    .modal-header .close {
+        top: 15px;
+        right: 25px;
+    }
+
+    .modal-body {
+        padding: 65px;
+        position: relative;
+        box-shadow: 0 15px 75px rgba(0, 0, 0, 0.75);
+        font-family: $opsans;
+        background-color: #fff;
+
+        border-radius: 25px;
+        background-image: url('../images/success_modal.jpg');
+        background-size: cover;
+    }
+
+    .modal-content {
+        border-radius: 25px;
+    }
+
+    .modal-title {
+        padding-top: 0;
+        max-width: none;
+        text-align: left;
+        position: relative;
+        margin: 0;
+        margin-bottom: 45px;
+        padding-left: 60px;
+
+        color: $darktext;
+        font-size: 28px;
+        font-weight: 700;
+
+        &::before {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+
+            background-image: url('../images/check-green.svg');
+            background-size: cover;
+            background-color: #09570d;
+
+            border-radius: 50%;
+            box-shadow: 0 3px 9px #89a46b;
+        }
+    }
+
+    .modal-subtitle {
+        max-width: 300px;
+        margin-bottom: 35px;
+
+        font-size: 20px;
+    }
+
+    .modal-appeal {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+
+    .modal-socials {
+        width: 120px;
+    }
+
+    @media (max-width: 1280px) {
+        .modal-dialog {
+            max-width: 720px;
+        }
+
+        .modal-body {
+            padding: 35px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .modal-dialog {
+            max-width: 480px;
+        }
+
+        .modal-body {
+            padding: 25px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .modal-title {
+            padding-left: 35px;
+            margin-bottom: 30px;
+
+            font-size: 18px;
+
+            &::before {
+                width: 25px;
+                height: 24px;
+            }
+        }
+
+        .modal-subtitle {
+            max-width: 185px;
+            margin-bottom: 15px;
+            font-size: 13px;
+        }
+
+        .modal-appeal {
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        .modal-socials {
+            width: 100px;
+        }
+    }
+}
+
+@media #{$desktop} {
+    .modal-submit {
+        padding: 12px 20px;
+        font-size: 18px;
+    }
+}

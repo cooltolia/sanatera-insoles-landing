@@ -1,0 +1,112 @@
+.comments {
+    width: 100%;
+    padding-top: 24px;
+    padding-bottom: 40px;
+
+    font-family: $roboto;
+    color: $darktext;
+
+    background-color: #fbfbfb;
+
+    &__title {
+        margin-bottom: 30px;
+
+        text-align: center;
+    }
+
+    &__slider {
+        max-width: 400px;
+        margin: 0 auto;
+
+        // .slick-track {
+        //     display: flex;
+        // }
+
+        .slick-arrow {
+            position: absolute;
+            z-index: 6;
+            top: 20%;
+
+            width: 20px;
+            height: 32px;
+
+            border: none;
+            background-color: transparent;
+            font-size: 0;
+
+            background-image: url('../images/arrow_red.svg');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            outline: none;
+        }
+
+        .slick-prev {
+            left: 0;
+            transform: rotate(180deg);
+        }
+
+        .slick-next {
+            right: 0;
+        }
+    }
+
+    &__slide {
+        // height: auto;
+        outline: none;
+        padding: 0 20px;
+    }
+}
+
+@media #{$tablet} {
+    .comments {
+
+        &__title {
+            margin-bottom: 50px;
+        }
+
+        &__slider {
+            max-width: 608px;
+
+            .slick-arrow {
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            .slick-prev {
+                left: -60px;
+                transform: translateY(-50%) rotate(180deg);
+            }
+
+            .slick-next {
+                right: -60px;
+            }
+        }
+    }
+}
+
+@media #{$desktop} {
+    .comments {
+        padding-top: 64px;
+        padding-bottom: 76px;
+
+        &__slider {
+            max-width: 920px;
+
+            .slick-arrow {
+                width: 40px;
+                height: 65px;
+            }
+
+            .slick-prev {
+                left: -80px;
+                transform: translateY(-50%) rotate(180deg);
+            }
+
+            .slick-next {
+                right: -80px;
+            }
+        }
+    }
+}

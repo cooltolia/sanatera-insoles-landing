@@ -1,0 +1,13 @@
+mixin main-features(features, featuresTitle)
+    +b.SECTION.main-features
+        +inner
+            +e.H2.title #{featuresTitle}
+            +e.list&attributes(attributes)
+                for item in features
+                    +e.item&attributes(attributes)
+                        +e.image
+                            img(src=item.image)
+                        if (item.subtitle)
+                            +e.subtitle= item.subtitle
+                        +e.P.text&attributes(attributes) !{item.text}
+

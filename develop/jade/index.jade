@@ -1,0 +1,24 @@
+include template/header
+include template/footer
+include ../blocks/**/*
+- var alias = "m"
+doctype
+html(lang='ru')
+    +doc-header
+    body.pageload.no-js
+        +main-header(href='/')
+        +top-screen-stelki
+        +main-features(stelkiFeatures, 'Почему стоит купить стельки в медицинском центре Санатера?')(class='fouritems')
+        +problems-slider(stelkiProblems)
+        +advantages-stelki
+        +sockliners-slider
+        //- +video-stelki
+        +steps-stelki
+        +specialists(stelkiSpecialists)
+        +comments
+        +faq(stelkiFaq)
+        +sertificates
+        +map
+        +main-footer
+        +modal
+        +doc-footer

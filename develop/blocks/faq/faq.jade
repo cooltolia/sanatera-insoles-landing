@@ -1,0 +1,20 @@
+mixin faq(data)
+    +b.SECTION.faq
+        +inner
+            +e.title
+                +title 
+                    | #{data.title}
+            +e.UL.list
+                each item in data.questions
+                    +e.LI.item(itemscope itemtype="http://schema.org/Question")
+                        +e.H3.question(itemprop="name")
+                            +e.SPAN.question-icon
+                                include ../../../app/images/arrow_red.svg
+                            | #{item.question}
+                        +e.answer(itemprop="acceptedAnswer" itemscope itemtype="http://schema.org/Answer")
+                            each answer in item.answers
+                                +e.P.text(itemprop="text")=answer
+                            if item.answerList
+                                +e.UL.answer-list
+                                    each li in item.answerList
+                                        +e.LI.answer-item !{li}

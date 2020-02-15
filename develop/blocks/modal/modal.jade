@@ -1,0 +1,25 @@
+mixin modal()
+    #success.modal.fade.success-modal(tabindex='-1', role='dialog')
+        .modal-dialog(role='document')
+            .modal-content
+                .modal-header
+                    button.close(type='button', data-dismiss='modal', aria-label='Close')
+                        span(aria-hidden='true') ×
+                .modal-body
+                    .modal-title Спасибо за заявку!
+                    p.modal-subtitle Наш администратор сейчас с вами свяжется
+    #modal1.modal.main-modal.fade(tabindex='-1', role='dialog', aria-labelledby='modal')
+        .modal-dialog(role='document')
+            .modal-content
+                .modal-header
+                    button.close(type='button', data-dismiss='modal', aria-label='Close')
+                        span(aria-hidden='true') ×
+                .modal-body
+                    form.modal-form(name='form1')
+                        .modal-input-row
+                            label.modal-label(for='modal_name') Имя
+                            input.modal-input(type='text' id='modal_name' name='modal_name')
+                        .modal-input-row
+                            label.modal-label(for='modal_tel') Телефон
+                            input.modal-input(type='text' id='modal_tel' data-inputmask="'mask': '+7(999)-999-99-99'" name='modal_tel' required placeholder='+7 (___) ___ __ __')
+                        button.modal-submit

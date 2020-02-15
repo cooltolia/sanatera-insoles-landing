@@ -1,0 +1,13 @@
+mixin sertificates()
+    +b.SECTION.sertificates
+        +inner
+            +e.title
+                +title Гарантия качества
+            +e.list-wrapper
+                +e.list
+                    for item in sertificatesArray
+                        +e.item
+                            +e.A.link(data-fancybox='gallery' href='#{item.big}')
+                            +e.image
+                                img(src='#{item.small}')
+                            +e.label= item.label

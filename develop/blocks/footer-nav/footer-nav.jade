@@ -1,0 +1,8 @@
+
+mixin footer-nav()
+    +b.NAV.footer-nav
+        +e.UL.list
+            each link in mainNav[0].subnav
+                +e.LI.item
+                    +e.A.link(href="#{link.url}") #{link.text}
+                

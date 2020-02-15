@@ -1,0 +1,17 @@
+mixin testimonial(data)
+    +b.testimonial
+        if (data.video)
+            +e.video
+        else
+            +e.image
+                img(src=data.image, alt="")
+            +e.content
+                +e.title= data.title
+                +e.text
+                    p= data.text
+                +e.footer
+                    +e.author
+                        +e.name= data.name
+                        +e.status= data.status
+                    if (data.link)
+                        +e.A.link(href=data.link.href class=data.link.icon)

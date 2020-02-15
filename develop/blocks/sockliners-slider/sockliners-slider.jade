@@ -1,0 +1,189 @@
+mixin sockliners-slider()
+    +b.SECTION.sockliners-slider
+        +inner
+            +e.title
+                +title Выберите стельки, подходящие именно Вам
+            +e.switchers
+                +e.BUTTON.switcher.active(type='button' data-for='sockliners1') Классические
+                +e.BUTTON.switcher(type='button' data-for='sockliners2') Спортивные
+                +e.BUTTON.switcher(type='button' data-for='sockliners3') Полустельки
+                +e.BUTTON.switcher(type='button' data-for='sockliners4') Утепленные
+            +e.content-wrapper
+                +e.content.active#sockliners1
+                    +e.col
+                        +e.slider#sockliners-slider1
+                            +e.slide
+                                img(src='/images/sockliners-slider/classic/slide1.jpg')
+                            +e.slide
+                                img(src='/images/sockliners-slider/classic/slide2.jpg')
+                            +e.slide
+                                img(src='/images/sockliners-slider/classic/slide3.jpg')
+                            +e.slide
+                                img(src='/images/sockliners-slider/classic/slide4.jpg')
+                            +e.slide
+                                img(src='/images/sockliners-slider/classic/slide5.jpg')
+                            +e.slide
+                                img(src='/images/sockliners-slider/classic/slide6.jpg')
+                        +e.thumbs
+                            +e.thumbs-item
+                                img(src='/images/sockliners-slider/classic/slide1.jpg')
+                            +e.thumbs-item
+                                img(src='/images/sockliners-slider/classic/slide2.jpg')
+                            +e.thumbs-item
+                                img(src='/images/sockliners-slider/classic/slide3.jpg')
+                            +e.thumbs-item
+                                img(src='/images/sockliners-slider/classic/slide4.jpg')
+                            +e.thumbs-item
+                                img(src='/images/sockliners-slider/classic/slide5.jpg')
+                            +e.thumbs-item
+                                img(src='/images/sockliners-slider/classic/slide6.jpg')
+                    +e.col.--flex-column
+                        +e.heading Классические
+                        +e.P.text Выполнены из перфорированной кожи на каркасе из термопластика и пяточного амортизатора.
+                        +e.P.text Используются для профилактики и при различных заболеваниях.
+                        +e.P.text Особенно рекомендуются для людей, ходящих по твердому городскому покрытию.
+                        +e.P.text Вкладываются в любую повседневную обувь.
+                        +e.UL.colors
+                            +e.LI.color-item(data-slide='1' style='background-image: url("/images/sockliners-slider/classic/color1.jpg")')
+                                img(src='#', alt='')
+                            +e.LI.color-item(data-slide='6' style='background-image: url("/images/sockliners-slider/classic/color2.jpg")')
+                                img(src='#', alt='')
+                        +e.spec.--correction Бесплатная коррекция 30 дней
+                        +e.spec.--speed Изготавливаются за 30 минут
+                        +e.spec.--thickness Толщина: <b>2 мм.</b> 
+                        +e.spec.--sizes Размеры: <b>с 29 по 45</b>
+                        +e.spec.--price Цена: <del>3 980 рублей</del> <b>1 990 рублей</b>
+                        +e.info Вторая пара по тому же слепку <b>990 рублей</b> 
+                        +e.BUTTON.order(type='button' data-toggle='modal' data-target='#modal1' data-button='Заказать') Заказать
+                +e.content#sockliners2
+                    +e.col
+                        +e.slider#sockliners-slider2
+                            +e.slide
+                                img(src='/images/sockliners-slider/sport/slide1.jpg')
+                            +e.slide
+                                img(src='/images/sockliners-slider/sport/slide2.jpg')
+                            +e.slide
+                                img(src='/images/sockliners-slider/sport/slide3.jpg')
+                            +e.slide
+                                img(src='/images/sockliners-slider/sport/slide4.jpg')
+                            +e.slide
+                                img(src='/images/sockliners-slider/sport/slide5.jpg')
+                            +e.slide
+                                img(src='/images/sockliners-slider/sport/slide6.jpg')
+                            +e.slide
+                                img(src='/images/sockliners-slider/sport/slide7.jpg')
+                            +e.slide
+                                img(src='/images/sockliners-slider/sport/slide8.jpg')
+                            +e.slide
+                                img(src='/images/sockliners-slider/sport/slide9.jpg')
+                        +e.thumbs
+                            +e.thumbs-item
+                                img(src='/images/sockliners-slider/sport/slide1.jpg')
+                            +e.thumbs-item
+                                img(src='/images/sockliners-slider/sport/slide2.jpg')
+                            +e.thumbs-item
+                                img(src='/images/sockliners-slider/sport/slide3.jpg')
+                            +e.thumbs-item
+                                img(src='/images/sockliners-slider/sport/slide4.jpg')
+                            +e.thumbs-item
+                                img(src='/images/sockliners-slider/sport/slide5.jpg')
+                            +e.thumbs-item
+                                img(src='/images/sockliners-slider/sport/slide6.jpg')
+                            +e.thumbs-item
+                                img(src='/images/sockliners-slider/sport/slide7.jpg')
+                            +e.thumbs-item
+                                img(src='/images/sockliners-slider/sport/slide8.jpg')
+                            +e.thumbs-item
+                                img(src='/images/sockliners-slider/sport/slide9.jpg')
+                    +e.col
+                        +e.heading Спортивные
+                        +e.P.text Выполнены из колоформа на каркасе из термопластика и пяточного амортизатора. Более мягкие, чем классические.
+                        +e.P.text Используются для профилактики, при различных заболеваниях и для занятий спортом.
+                        +e.P.text Особенно рекомендуются для людей, которые много стоят или ходят в течении дня.
+                        +e.P.text Вкладываются в любую повседневную и спортивную обувь.
+                        +e.UL.colors
+                            +e.LI.color-item(data-slide='4' style='background-image: url("/images/sockliners-slider/sport/color1.jpg")')
+                                img(src='#', alt='')
+                            +e.LI.color-item(data-slide='5' style='background-image: url("/images/sockliners-slider/sport/color2.jpg")')
+                                img(src='#', alt='')
+                            +e.LI.color-item(data-slide='6' style='background-image: url("/images/sockliners-slider/sport/color3.jpg")')
+                                img(src='#', alt='')
+                            +e.LI.color-item(data-slide='7' style='background-image: url("/images/sockliners-slider/sport/color4.jpg")')
+                                img(src='#', alt='')
+                            +e.LI.color-item(data-slide='8' style='background-image: url("/images/sockliners-slider/sport/color5.jpg")')
+                                img(src='#', alt='')
+                            +e.LI.color-item(data-slide='9' style='background-image: url("/images/sockliners-slider/sport/color6.jpg")')
+                                img(src='#', alt='')
+                        +e.spec.--correction Бесплатная коррекция 30 дней
+                        +e.spec.--speed Изготавливаются за 30 минут
+                        +e.spec.--thickness Толщина: <b>2 мм.</b> 
+                        +e.spec.--sizes Размеры: <b>с 29 по 45</b>
+                        +e.spec.--price Цена: <del>4 380 рублей</del> <b>2 190 рублей</b>
+                        +e.info Вторая пара по тому же слепку <b>1 190 рублей</b> 
+                        +e.BUTTON.order(type='button' data-toggle='modal' data-target='#modal1' data-button='Заказать') Заказать
+                +e.content#sockliners3
+                    +e.col
+                        +e.slider#sockliners-slider3
+                            +e.slide
+                                img(src='/images/sockliners-slider/half/slide1.jpg')
+                            +e.slide
+                                img(src='/images/sockliners-slider/half/slide2.jpg')
+                            +e.slide
+                                img(src='/images/sockliners-slider/half/slide3.jpg')
+                            +e.slide
+                                img(src='/images/sockliners-slider/half/slide4.jpg')
+                        +e.thumbs
+                            +e.thumbs-item
+                                img(src='/images/sockliners-slider/half/slide1.jpg')
+                            +e.thumbs-item
+                                img(src='/images/sockliners-slider/half/slide2.jpg')
+                            +e.thumbs-item
+                                img(src='/images/sockliners-slider/half/slide3.jpg')
+                            +e.thumbs-item
+                                img(src='/images/sockliners-slider/half/slide4.jpg')
+                    +e.col
+                        +e.heading Полустельки
+                        +e.P.text Выполнены из перфорированной кожи на каркасе из термопластика и пяточного амортизатора.
+                        +e.P.text Используются для профилактики и при различных заболеваниях. 
+                        +e.P.text Особенно рекомендуются для людей, ходящих по твердому городскому покрытию.
+                        +e.P.text Вкладываются в любую повседневную и модельную обувь.
+                        +e.UL.colors
+                            +e.LI.color-item(data-slide='1' style='background-image: url("/images/sockliners-slider/half/color1.jpg")')
+                                img(src='#', alt='')
+                        +e.spec.--correction Бесплатная коррекция 30 дней
+                        +e.spec.--speed Изготавливаются за 30 минут
+                        +e.spec.--thickness Толщина: <b>2 мм.</b> 
+                        +e.spec.--sizes Размеры: <b>с 29 по 45</b>
+                        +e.spec.--price Цена: <del>3 980 рублей</del> <b>1 990 рублей</b>
+                        +e.info Вторая пара по тому же слепку <b>990 рублей</b> 
+                        +e.BUTTON.order(type='button' data-toggle='modal' data-target='#modal1' data-button='Заказать') Заказать
+                +e.content#sockliners4
+                    +e.col
+                        +e.slider#sockliners-slider4
+                            +e.slide
+                                img(src='/images/sockliners-slider/warm/slide1.jpg')
+                            +e.slide
+                                img(src='/images/sockliners-slider/warm/slide2.jpg')
+                        +e.thumbs
+                            +e.thumbs-item
+                                img(src='/images/sockliners-slider/warm/slide1.jpg')
+                            +e.thumbs-item
+                                img(src='/images/sockliners-slider/warm/slide2.jpg')
+                    +e.col
+                        +e.heading Утепленные
+                        +e.P.text Выполнены из флиса на каркасе из термопластика и пяточного амортизатора.
+                        +e.P.text Используются для профилактики и при различных заболеваниях. 
+                        +e.P.text Наиболее подходят для демисезонного и зимнего времени года.
+                        +e.P.text Вкладываются в любую повседневную обувь.
+                        +e.UL.colors
+                            +e.LI.color-item(data-slide='1' style='background-image: url("/images/sockliners-slider/warm/color1.jpg")')
+                                img(src='#', alt='')
+                            +e.LI.color-item(data-slide='2' style='background-image: url("/images/sockliners-slider/warm/color2.jpg")')
+                                img(src='#', alt='')
+                        +e.spec.--correction Бесплатная коррекция 30 дней
+                        +e.spec.--speed Изготавливаются за 30 минут
+                        +e.spec.--thickness Толщина: <b>2 мм.</b> 
+                        +e.spec.--sizes Размеры: <b>с 29 по 45</b>
+                        +e.spec.--price Цена: <del>4 380 рублей</del> <b>2 190 рублей</b>
+                        +e.info Вторая пара по тому же слепку <b>1 190 рублей</b>
+                        +e.BUTTON.order(type='button' data-toggle='modal' data-target='#modal1' data-button='Заказать') Заказать
