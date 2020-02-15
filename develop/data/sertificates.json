@@ -1,19 +1,19 @@
 {
     "sertificatesArray": [{
-        "small": "/images/sertificates/sertificate1.jpg",
-        "big": "/images/sertificates/sertificate1.jpg",
+        "small": "images/sertificates/sertificate1.jpg",
+        "big": "images/sertificates/sertificate1.jpg",
         "label": "Патент на изобретение"
     }, {
-        "small": "/images/sertificates/sertificate2.jpg",
-        "big": "/images/sertificates/sertificate2.jpg",
+        "small": "images/sertificates/sertificate2.jpg",
+        "big": "images/sertificates/sertificate2.jpg",
         "label": "Сертификат соответсвия"
     }, {
-        "small": "/images/sertificates/sertificate3.jpg",
-        "big": "/images/sertificates/sertificate3.jpg",
+        "small": "images/sertificates/sertificate3.jpg",
+        "big": "images/sertificates/sertificate3.jpg",
         "label": "Мед. лицензия"
     }, {
-        "small": "/images/sertificates/sertificate4.jpg",
-        "big": "/images/sertificates/sertificate4.jpg",
+        "small": "images/sertificates/sertificate4.jpg",
+        "big": "images/sertificates/sertificate4.jpg",
         "label": "СанЭпидем заключение"
     }]
 }

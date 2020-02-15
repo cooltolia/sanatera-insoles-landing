@@ -1,15 +1,15 @@
 {
 	"stelkiFeatures": [
 		{
-			"image": "/images/stelki/features/feature11.svg",
+			"image": "images/stelki/features/feature11.svg",
 			"text": "Для любой обуви взрослым и детям"
 		},
 		{
-			"image": "/images/stelki/features/feature12.svg",
+			"image": "images/stelki/features/feature12.svg",
 			"text": "Изготовление 30 минут по индивидуальному слепку стопы"
 		},
 		{
-			"image": "/images/stelki/features/feature13.svg",
+			"image": "images/stelki/features/feature13.svg",
 			"text": "Для здоровья, для спорта, для повседневной ходьбы"
 		}
 	],
@@ -17,121 +17,121 @@
 		"title": "Есть проблема?",
 		"list": [
 			{
-				"image_s": "/images/stelki/problems/problem1_s.jpg",
-				"image": "/images/stelki/problems/problem1.jpg",
-				"image_l": "/images/stelki/problems/problem1_l.jpg",
+				"image_s": "images/stelki/problems/problem1_s.jpg",
+				"image": "images/stelki/problems/problem1.jpg",
+				"image_l": "images/stelki/problems/problem1_l.jpg",
 				"text": "Плоскостопие",
 				"description": "Плоскостопие – известная болезнь, связанная с деформацией человеческой стопы. Патологическое состояние оказывает негативное воздействие на самочувствие и со временем может вызвать появление болей в области поясницы и позвоночника, формирование неправильной осанки, развитие сколиоза, артроза и варикоза."
 			},
 			{
-				"image_s": "/images/stelki/problems/problem13_s.jpg",
-				"image": "/images/stelki/problems/problem13.jpg",
-				"image_l": "/images/stelki/problems/problem13_l.jpg",
+				"image_s": "images/stelki/problems/problem13_s.jpg",
+				"image": "images/stelki/problems/problem13.jpg",
+				"image_l": "images/stelki/problems/problem13_l.jpg",
 				"text": "Длительная ходьба или работа на ногах ",
 				"description": "Ежедневно нам приходится проходить огромные расстояния в неудобной обуви на работе, а после тяжелого трудового дня уже просто не остается сил даже на себя. Если вы проводите много времени на ногах, то у вас может ухудшаться кровоснабжение нижних конечностей, что приводит к болезненным ощущениям. <br/><br/>Также при долгом стоянии на ногах может происходить скопление крови в ступнях или вокруг щиколоток, плоскостопие, подошвенный фасцит, мозоли, отечность, варикозное расширение вен и венозная недостаточность.<br/><br/> Ходьба – несомненно полезна, однако не для всех. Люди, имеющие проблемы с опорно-двигательным аппаратом страдают от боли в стопах больше, чем люди, не имеющие таких проблем. Ортопедические стельки способны облегчить нагрузку на стопы и тем самым продлить время прогулки."
 			},
 			{
-				"image_s": "/images/stelki/problems/problem4_s.jpg",
-				"image": "/images/stelki/problems/problem4.jpg",
-				"image_l": "/images/stelki/problems/problem4_l.jpg",
+				"image_s": "images/stelki/problems/problem4_s.jpg",
+				"image": "images/stelki/problems/problem4.jpg",
+				"image_l": "images/stelki/problems/problem4_l.jpg",
 				"text": "Вальгусная и варусная стопа",
 				"description": "Варусная деформация стоп — поворот стопы внутрь, при этом искривляется купол и ось стопы, а ноги в области голени образуют круг. <br/><br/> Вальгусная же деформация подразумевает поворот стопы наружу. Ноги в области голени больного расходятся в стороны, поэтому такой вид деформации называется Х-образным. <br/><br/> Последствиями варусной и вальгусной стопы становятся неуверенная походка с постоянными болями, ухудшение подвижности суставов и сосудов голени, состояния мышц, хрящей, связок обеих конечностей."
 			},
 			{
-				"image_s": "/images/stelki/problems/problem10_s.jpg",
-				"image": "/images/stelki/problems/problem10.jpg",
-				"image_l": "/images/stelki/problems/problem10_l.jpg",
+				"image_s": "images/stelki/problems/problem10_s.jpg",
+				"image": "images/stelki/problems/problem10.jpg",
+				"image_l": "images/stelki/problems/problem10_l.jpg",
 				"text": "Пяточная шпора",
 				"description": "Пяточная шпора – это разрастание костной ткани в виде шипа в зоне бугра кости пятки или около ахиллова сухожилия. Этот недуг можно распознать по сильным болезненным ощущениям в пятке, особенно по утрам. <br/><br/>Последствиями длительного пренебрежения лечения являются повреждение нервных волокон, снижение подвижности, откалывание остеофита, повышается вероятность развития различных травм, изменения походки и осанки. "
 			},
 			{
-				"image_s": "/images/stelki/problems/problem7_s.jpg",
-				"image": "/images/stelki/problems/problem7.jpg",
-				"image_l": "/images/stelki/problems/problem7_l.jpg",
+				"image_s": "images/stelki/problems/problem7_s.jpg",
+				"image": "images/stelki/problems/problem7.jpg",
+				"image_l": "images/stelki/problems/problem7_l.jpg",
 				"text": "Заболевания позвоночника",
 				"description": "Искривления позвоночного столба, возникающий вследствие длительного неправильного сидячего положения и сутулости во время работы или учебы. Протрузии и межпозвоночные грыжи — это выпячивание или выход межпозвоночного диска за пределы позвонков в область спинномозгового канала.<br/><br/> Согласно статистике, свыше 80% населения земного шара жалуются на боли в спине. Причиной дискомфортных ощущений могут быть серьезные заболевания позвоночника, которые значительно осложняют жизнь страдающему от них человеку. Откладывать посещение специалиста в случае, когда вы почувствовали боли, – неразумно."
 			},
 			{
-				"image_s": "/images/stelki/problems/problem14_s.jpg",
-				"image": "/images/stelki/problems/problem14.jpg",
-				"image_l": "/images/stelki/problems/problem14_l.jpg",
+				"image_s": "images/stelki/problems/problem14_s.jpg",
+				"image": "images/stelki/problems/problem14.jpg",
+				"image_l": "images/stelki/problems/problem14_l.jpg",
 				"text": "Для городов с асфальтным покрытием",
 				"description": "Стопа человека изначально не была предназначена для ходьбы по гладкой, плоской поверхности. Стопам для развития необходима неровная дорога, но для жителей большого города это становится препятствием. <br/><br/>В результате постоянной ходьбы по ровной поверхности стопа может атрофироваться и перестает в полном объеме функционировать в должной мере."
 			},
 			{
-				"image_s": "/images/stelki/problems/problem2_s.jpg",
-				"image": "/images/stelki/problems/problem2.jpg",
-				"image_l": "/images/stelki/problems/problem2_l.jpg",
+				"image_s": "images/stelki/problems/problem2_s.jpg",
+				"image": "images/stelki/problems/problem2.jpg",
+				"image_l": "images/stelki/problems/problem2_l.jpg",
 				"text": "Варикоз и отёки",
 				"description": "Образование варикозного расширения вен и отёков – последствие сидячего образа жизни, чрезмерной физической нагрузкой, наследственной предрасположенностью и ряд других факторов, что делает возможным его появление у людей различных возрастов и не зависит от пола. <br/><br/>Игнорирование варикоза при его первоначальных проявлениях приводит к его более тяжелым формам и осложнениям. Последствиями могут быть тромбофлебит, кровотечения, нарушения питания тканей, повышенная пигментация, чрезмерное тромбообразование."
 			},
 			{
-				"image_s": "/images/stelki/problems/problem5_s.jpg",
-				"image": "/images/stelki/problems/problem5.jpg",
-				"image_l": "/images/stelki/problems/problem5_l.jpg",
+				"image_s": "images/stelki/problems/problem5_s.jpg",
+				"image": "images/stelki/problems/problem5.jpg",
+				"image_l": "images/stelki/problems/problem5_l.jpg",
 				"text": "Диабетическая стопа",
 				"description": "Синдром диабетической стопы — это опасное осложнение сахарного диабета. При длительном пренебрежении лечения оно способно привести к образованию язвенного поражения тканей стопы, нередко выливающегося в гангрену ноги, которая впоследствии может привести к ампутации."
 			},
 			{
-				"image_s": "/images/stelki/problems/problem6_s.jpg",
-				"image": "/images/stelki/problems/problem6.jpg",
-				"image_l": "/images/stelki/problems/problem6_l.jpg",
+				"image_s": "images/stelki/problems/problem6_s.jpg",
+				"image": "images/stelki/problems/problem6.jpg",
+				"image_l": "images/stelki/problems/problem6_l.jpg",
 				"text": "Беременность",
 				"description": "Беременность — это прекрасная пора для любой женщины, ведь она является важным этапом в свершении чуда- рождение нового человека. Однако беременность помимо радости от скоро рождения своего ребенка предполагает наличие таких побочных эффектов, как повышенная нагрузка на ноги, постоянная усталость, судороги, чрезмерная потливость и многое другое."
 			},
 			{
-				"image_s": "/images/stelki/problems/problem15_s.jpg",
-				"image": "/images/stelki/problems/problem15.jpg",
-				"image_l": "/images/stelki/problems/problem15_l.jpg",
+				"image_s": "images/stelki/problems/problem15_s.jpg",
+				"image": "images/stelki/problems/problem15.jpg",
+				"image_l": "images/stelki/problems/problem15_l.jpg",
 				"text": "Разная длина ног",
 				"description": "Минимальные различия в длине ног не требуют особого лечения или использования ортопедических изделий, в то время как стоит обратить внимание на заметные различия. При разнице в длине ног до 2 см, рекомендуется использование ортопедических стелек для коррекции и фиксации стопы в правильном положении."
 			},
 			{
-				"image_s": "/images/stelki/problems/problem8_s.jpg",
-				"image": "/images/stelki/problems/problem8.jpg",
-				"image_l": "/images/stelki/problems/problem8_l.jpg",
+				"image_s": "images/stelki/problems/problem8_s.jpg",
+				"image": "images/stelki/problems/problem8.jpg",
+				"image_l": "images/stelki/problems/problem8_l.jpg",
 				"text": "Высокий свод стопы",
 				"description": "Высокий свод стопы или «полая стопа» — это болезнь, подразумевающая деформацию нижних конечностей. Это выражается в неправильном давлении на стопу, из-за чего происходит перегрузка пятки. <br/><br/>Если вовремя не заняться лечение этой проблемы, могут возникнуть периодические растяжения связочных элементов голеностопа, подошвенный фасциит, неустойчивость во время ходьбы и бега."
 			},
 			{
-				"image_s": "/images/stelki/problems/problem9_s.jpg",
-				"image": "/images/stelki/problems/problem9.jpg",
-				"image_l": "/images/stelki/problems/problem9_l.jpg",
+				"image_s": "images/stelki/problems/problem9_s.jpg",
+				"image": "images/stelki/problems/problem9.jpg",
+				"image_l": "images/stelki/problems/problem9_l.jpg",
 				"text": "Молоткообразные пальцы",
 				"description": "Молоткообразная деформация пальцев стопы — это изменение положения и формы суставов. Причинами возникновения данного недуга могут быть тесная обувь, врожденная патология или негативные изменения в суставах и связках.<br/><br/> Если болезнь находится на запущенной стадии и пальцы не разгибаются и не могут занимать правильное положение, то в этом случае невозможно избежать оперативного вмешательства врачей для удаления части кости."
 			},
 			{
-				"image_s": "/images/stelki/problems/problem12_s.jpg",
-				"image": "/images/stelki/problems/problem12.jpg",
-				"image_l": "/images/stelki/problems/problem12_l.jpg",
+				"image_s": "images/stelki/problems/problem12_s.jpg",
+				"image": "images/stelki/problems/problem12.jpg",
+				"image_l": "images/stelki/problems/problem12_l.jpg",
 				"text": "Формирование стопы у детей",
 				"description": "Формирование стопы ребенка начинается еще в эмбриональном периоде. Стопа изменяется с начала 8 недели до 5-6 лет. В это время весь опорно-двигательный аппарат продолжает расти и, следовательно, меняться.<br/><br/> Примерно с 3-летнего возраста, свой окончательный вид принимают кости и связки стоп. В этот период стоит внимательно подойти к делу и следить за формированием стопы ребенка, чтобы в дальнейшем стопа смогла полноценно функционировать.<br/><br/> Важно помнить, что до 5-6 лет плоскостопие еще можно вылечить или скорректировать в более легкую форму."
 			},
 			{
-				"image_s": "/images/stelki/problems/problem16_s.jpg",
-				"image": "/images/stelki/problems/problem16.jpg",
-				"image_l": "/images/stelki/problems/problem16_l.jpg",
+				"image_s": "images/stelki/problems/problem16_s.jpg",
+				"image": "images/stelki/problems/problem16.jpg",
+				"image_l": "images/stelki/problems/problem16_l.jpg",
 				"text": "Лишний вес",
 				"description": "Лишний вес увеличивает нагрузку на стопы. Ходьба может доставлять немалый дискомфорт человеку с лишним весом ввиду того, что стопы не могут быстро адаптироваться к изменениям в нагрузке."
 			},
 			{
-				"image_s": "/images/stelki/problems/problem17_s.jpg",
-				"image": "/images/stelki/problems/problem17.jpg",
-				"image_l": "/images/stelki/problems/problem17_l.jpg",
+				"image_s": "images/stelki/problems/problem17_s.jpg",
+				"image": "images/stelki/problems/problem17.jpg",
+				"image_l": "images/stelki/problems/problem17_l.jpg",
 				"text": "Косточка",
 				"description": "Косточка на ноге называется вальгусной деформацией большого пальца стопы. Латинское название Hallus valgus отражает суть происходящих изменений. Термином Hallus медики называют большой палец ноги. Valgus означает «кривой».<br/><br/> Шишка образуется в результате длительного нарушения биомеханики первого плюснефалангового сустава. Большая нагрузка на сочленение постепенно вызывает смещение плюсневой кости большого пальца ноги наружу относительно средней линии тела. При этом первая фаланга отклоняется в сторону стопы.<br/><br/> Из-за изменения положения костей перераспределяется нагрузка на стопу. Давление на плюснефаланговый сустав большого пальца увеличивается. Головка кости частично выходит из него, провоцируя дальнейшую деформацию стопы."
 			},
 			{
-				"image_s": "/images/stelki/problems/problem3_s.jpg",
-				"image": "/images/stelki/problems/problem3.jpg",
-				"image_l": "/images/stelki/problems/problem3_l.jpg",
+				"image_s": "images/stelki/problems/problem3_s.jpg",
+				"image": "images/stelki/problems/problem3.jpg",
+				"image_l": "images/stelki/problems/problem3_l.jpg",
 				"text": "Грибок ногтя и стопы",
 				"description": "Микоз – это грибковое заболевание, которое поражает кожные покровы, внутренние органы и костные ткани (ногти и т. д.). Сопровождается этот недуг непрерывным зудом, шелушением и неприятным запахом. <br/><br/>Грибковые инфекции крайне заразны и могут быстро распространиться на другие части тела, и заболевание может принять более серьезную форму. Впоследствии человек при затяжном игнорировании заболевания может заразить своих близких."
 			},
 			{
-				"image_s": "/images/stelki/problems/problem11_s.jpg",
-				"image": "/images/stelki/problems/problem11.jpg",
-				"image_l": "/images/stelki/problems/problem11_l.jpg",
+				"image_s": "images/stelki/problems/problem11_s.jpg",
+				"image": "images/stelki/problems/problem11.jpg",
+				"image_l": "images/stelki/problems/problem11_l.jpg",
 				"text": "Натоптыши и мозоли",
 				"description": "Натоптыши и мозоли — это уплотненная ороговевшая кожа на подушечках пальцев и между пальцами, на подошвах и пятках, которая появляется в результате постоянной неравномерной нагрузки на ногу, ношения узкой и тесной обуви с наличием неудобной колодки или высоких каблуков.<br/><br/> Самым страшным последствием натоптышей могу быть трещины на стопах. Мозоли же редко приводят к каким-либо осложнениям. Единственное, в чем нужно проявлять осторожность при борьбе с мозолями — это аккуратность в их срезании, чтобы не допустить попадании инфекции."
 			}
@@ -139,9 +139,9 @@
 	},
 	"stelkiSpecialists": [
 		{
-			"image_s": "/images/stelki/specialists/specialist1_s.jpg",
-			"image_m": "/images/stelki/specialists/specialist1_m.jpg",
-			"image_l": "/images/stelki/specialists/specialist1_l.jpg",
+			"image_s": "images/stelki/specialists/specialist1_s.jpg",
+			"image_m": "images/stelki/specialists/specialist1_m.jpg",
+			"image_l": "images/stelki/specialists/specialist1_l.jpg",
 			"name": "Абедальазиз Хамза Абдаллахович",
 			"prof": "Мануальный терапевт",
 			"achieves": [
@@ -152,9 +152,9 @@
 			]
 		},
 		{
-			"image_s": "/images/stelki/specialists/specialist2_s.jpg",
-			"image_m": "/images/stelki/specialists/specialist2_m.jpg",
-			"image_l": "/images/stelki/specialists/specialist2_l.jpg",
+			"image_s": "images/stelki/specialists/specialist2_s.jpg",
+			"image_m": "images/stelki/specialists/specialist2_m.jpg",
+			"image_l": "images/stelki/specialists/specialist2_l.jpg",
 			"name": "Абедальазиз Хамза Абдаллахович",
 			"prof": "Мануальный терапевт",
 			"achieves": [
@@ -286,36 +286,36 @@
 	],
 	"sertificatesArray": [
 		{
-			"small": "/images/sertificates/sertificate1.jpg",
-			"big": "/images/sertificates/sertificate1.jpg",
+			"small": "images/sertificates/sertificate1.jpg",
+			"big": "images/sertificates/sertificate1.jpg",
 			"label": "Патент на изобретение"
 		},
 		{
-			"small": "/images/sertificates/sertificate2.jpg",
-			"big": "/images/sertificates/sertificate2.jpg",
+			"small": "images/sertificates/sertificate2.jpg",
+			"big": "images/sertificates/sertificate2.jpg",
 			"label": "Сертификат соответсвия"
 		},
 		{
-			"small": "/images/sertificates/sertificate3.jpg",
-			"big": "/images/sertificates/sertificate3.jpg",
+			"small": "images/sertificates/sertificate3.jpg",
+			"big": "images/sertificates/sertificate3.jpg",
 			"label": "Мед. лицензия"
 		},
 		{
-			"small": "/images/sertificates/sertificate4.jpg",
-			"big": "/images/sertificates/sertificate4.jpg",
+			"small": "images/sertificates/sertificate4.jpg",
+			"big": "images/sertificates/sertificate4.jpg",
 			"label": "СанЭпидем заключение"
 		}
 	],
 	"testimonials": [
 		{
-			"image": "../images/comments/testimonial1.jpg",
+			"image": "images/comments/testimonial1.jpg",
 			"title": "Сходил в санатеру)))0)00))0)000",
 			"text": "Если вы читаете этот отзыв, знайте, медцентр “Санатера” действительно заслуживает вашего внимания. Я полностью избавился от проблем со спинной в течение 1 месяца. Обратился в “Санатеру” за ортопедическими стельками не случайно, а по рекомендации хорошего друга. Если по делу, то служат стельки долго и выполняют свои функции на ура! Даже обычная",
 			"name": "Толя Вассерман",
 			"status": "бородач, умник"
 		},
 		{
-			"image": "../images/comments/testimonial2.jpg",
+			"image": "images/comments/testimonial2.jpg",
 			"title": "Сходил в санатеру)))0)00))0)000",
 			"text": "Если вы читаете этот отзыв, знайте, медцентр “Санатера” действительно заслуживает вашего внимания. Я полностью избавился от проблем со спинной в течение 1 месяца. Обратился в “Санатеру” за ортопедическими стельками не случайно, а по рекомендации хорошего друга. Если по делу, то служат стельки долго и выполняют свои функции на ура! Даже обычная",
 			"name": "Вася Пупкин",
