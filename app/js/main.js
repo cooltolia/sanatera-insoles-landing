@@ -346,7 +346,7 @@ jQuery(document).ready(function ($) {
 
                         // Своё изображение иконки метки.
 
-                        iconImageHref: '../images/icons/map-icon.png',
+                        iconImageHref: 'images/icons/map-icon.png',
 
                         // Размеры метки.
 

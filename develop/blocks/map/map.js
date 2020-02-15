@@ -79,7 +79,7 @@ $(window).on('load', function () {
                     // Необходимо указать данный тип макета.
                     iconLayout: 'default#image',
                     // Своё изображение иконки метки.
-                    iconImageHref: '../images/icons/map-icon.png',
+                    iconImageHref: 'images/icons/map-icon.png',
                     // Размеры метки.
                     iconImageSize: [30, 30],
                     // Смещение левого верхнего угла иконки относительно
