@@ -6,8 +6,6 @@
     font-family: $roboto;
     color: $darktext;
 
-    background-color: #fbfbfb;
-
     &__title {
         margin-bottom: 30px;
 
@@ -67,7 +65,7 @@
         }
 
         &__slider {
-            max-width: 608px;
+            max-width: 648px;
 
             .slick-arrow {
                 top: 50%;
@@ -75,12 +73,12 @@
             }
 
             .slick-prev {
-                left: -60px;
+                left: -40px;
                 transform: translateY(-50%) rotate(180deg);
             }
 
             .slick-next {
-                right: -60px;
+                right: -40px;
             }
         }
     }
@@ -92,20 +90,19 @@
         padding-bottom: 76px;
 
         &__slider {
-            max-width: 920px;
+            max-width: 940px;
 
             .slick-arrow {
-                width: 40px;
-                height: 65px;
+                // height: 65px;
+                height: 170px;
             }
 
             .slick-prev {
-                left: -80px;
-                transform: translateY(-50%) rotate(180deg);
+                left: -70px;
             }
 
             .slick-next {
-                right: -80px;
+                right: -70px;
             }
         }
     }

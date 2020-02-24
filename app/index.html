@@ -29,15 +29,17 @@
       <div class="inner">
         <div class="main-header__inner"><a class="main-header__logo" href="/">
           <IMG src="images/logo.svg"></IMG></a>
-          <div class="main-header__info"><svg width="20" height="30" viewBox="0 0 20 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <div class="main-header__info">
+            <div class="icon"><svg width="20" height="30" viewBox="0 0 20 30" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M10 0C4.48611 0 0 4.48611 0 10C0 11.6553 0.413848 13.2965 1.20059 14.7522L9.45317 29.6777C9.56303 29.8767 9.77238 30 10 30C10.2277 30 10.437 29.8767 10.5469 29.6777L18.8025 14.7473C19.5862 13.2965 20 11.6552 20 9.99996C20 4.48611 15.5139 0 10 0ZM10 15C7.24307 15 5.00004 12.757 5.00004 10C5.00004 7.24307 7.24307 5.00004 10 5.00004C12.757 5.00004 15 7.24307 15 10C15 12.757 12.757 15 10 15Z" fill="#D60623"/>
 </svg>
 
+            </div>
             <div class="main-header__address">г. Санкт-Петербург, м.&nbsp;Маяковская, Невский&nbsp;проспект, 61 (вход со двора)
             </div>
             <div class="main-header__shedule">с 8:00 до 22:00, приём заявок круглосуточно
             </div>
-          </div><a href="telto: +7 (812) 421-74-97" class="main-header__phone">+7 (812) 421-74-97</a>
+          </div><a href="tel: +7 (812) 421-74-97" class="main-header__phone">+7 (812) 421-74-97</a>
         </div>
       </div>
     </header><!--/ main-header --> <!-- top-screen-stelki --> 
@@ -793,7 +795,87 @@
           </div>
         </div>
       </div>
-    </article><!--/ comments --> <!-- faq --> 
+    </article><!--/ comments --> <!-- quiz --> 
+    <section class="quiz">
+      <div class="inner">
+        <div class="quiz__title"><!-- title --> 
+          <h2 class="title">Как правильно подобрать стельки
+          </h2><!--/ title --> 
+        </div>
+      </div>
+      <form action="#" method="post" class="quiz__slider">
+        <div class="quiz__question">
+          <div class="quiz__question-title">Для чего нужны стельки?
+          </div>
+          <div class="quiz__question-answers">
+            <div class="quiz__question-answer">
+              <input id="question1_1" type="radio" name="question1" value="answer1"/>
+              <label for="question1_1">Для обычной ходьбы</label>
+            </div>
+            <div class="quiz__question-answer">
+              <input id="question1_2" type="radio" name="question1" value="answer2"/>
+              <label for="question1_2">Для лечения</label>
+            </div>
+            <div class="quiz__question-answer">
+              <input id="question1_3" type="radio" name="question1" value="answer3"/>
+              <label for="question1_3">Для бега</label>
+            </div>
+          </div>
+        </div>
+        <div class="quiz__question">
+          <div class="quiz__question-title">Уточните, пожалуйста, информацию:
+          </div>
+          <div class="quiz__question-answers">
+            <div class="quiz__question-answer">
+              <input id="question2_1" type="radio" name="question2" value="answer1"/>
+              <label for="question2_1">Плоскостопие</label>
+            </div>
+            <div class="quiz__question-answer">
+              <input id="question2_2" type="radio" name="question2" value="answer2"/>
+              <label for="question2_2">Вальгусная и варусная стопа</label>
+            </div>
+            <div class="quiz__question-answer">
+              <input id="question2_3" type="radio" name="question2" value="answer3"/>
+              <label for="question2_3">Сколиоз</label>
+            </div>
+            <div class="quiz__question-answer">
+              <input id="question2_4" type="radio" name="question2" value="answer4"/>
+              <label for="question2_4">Боли в ногах, ступнях</label>
+            </div>
+          </div>
+        </div>
+        <div class="quiz__question">
+          <div class="quiz__question-title">Спасибо, что ответили на все вопросы - это поможет сэкономить время
+          </div>
+          <p class="quiz__question-text">Впишите ваш телефон и мы свяжемся с вами как можно скорее
+          </p>
+          <div class="quiz__question-phone">
+            <input type="text" name="question_phone" required="required" placeholder="Ваш номер телефона"/>
+          </div>
+          <button type="submit" class="quiz__submit">Узнать результаты
+          </button>
+        </div>
+      </form>
+      <div class="inner">
+        <div class="quiz__controls">
+          <button disabled="" class="quiz__control quiz__previous">Назад
+          </button>
+          <div class="quiz__status">
+             
+            Вопрос
+             <span class="current"></span> 
+            из
+             <span class="total"></span>
+          </div>
+          <button disabled="" class="quiz__control quiz__next">Далее 
+          </button>
+        </div>
+        <div class="quiz__progress">
+          <div class="quiz__progress-bar">
+          </div>
+        </div>
+      </div>
+    </section><!--/ quiz --> <!-- faq --> 
     <section class="faq">
       <div class="inner">
         <div class="faq__title"><!-- title --> 
@@ -817,6 +899,14 @@
             <div itemprop="acceptedAnswer" itemscope="itemscope" itemtype="http://schema.org/Answer" class="faq__answer">
               <p itemprop="text" class="faq__text">Прессотерапия не оставляет следов на Вашем теле, абсолютно безболезненна, эффект заметен и ощущается пациентом уже после первой процедуры.
               </p>
+              <ul class="faq__answer-list">
+                <li class="faq__answer-item">Прессотерапия не оставляет следов на Вашем теле
+                </li>
+                <li class="faq__answer-item">Абсолютно безболезненна
+                </li>
+                <li class="faq__answer-item">Эффект заметен и ощущается пациентом уже после первой процедуры.
+                </li>
+              </ul>
             </div>
           </li>
           <li itemscope="itemscope" itemtype="http://schema.org/Question" class="faq__item">
@@ -913,52 +1003,25 @@
     </div><!--/ map --> <!-- main-footer --> 
     <footer class="main-footer">
       <div class="inner">
-        <div class="main-footer__row">
-          <div class="main-footer__footer-nav"><!-- footer-nav --> 
-            <nav class="footer-nav">
-              <ul class="footer-nav__list">
-                <li class="footer-nav__item"><a href="/uslugi/uzi.html" class="footer-nav__link">УЗИ</a>
-                </li>
-                <li class="footer-nav__item"><a href="/uslugi/stelki.html" class="footer-nav__link">Стельки</a>
-                </li>
-                <li class="footer-nav__item"><a href="/uslugi/ortoped.html" class="footer-nav__link">Ортопед</a>
-                </li>
-                <li class="footer-nav__item"><a href="/uslugi/manualka.html" class="footer-nav__link">Мануальная терапия</a>
-                </li>
-                <li class="footer-nav__item"><a href="/uslugi/massage.html" class="footer-nav__link">Массаж</a>
-                </li>
-                <li class="footer-nav__item"><a href="/uslugi/pedicure.html" class="footer-nav__link">Аппаратный педикюр</a>
-                </li>
-                <li class="footer-nav__item"><a href="/uslugi/diagnostika.html" class="footer-nav__link">Диагностика</a>
-                </li>
-                <li class="footer-nav__item"><a href="/uslugi/uvt.html" class="footer-nav__link">УВТ</a>
-                </li>
-                <li class="footer-nav__item"><a href="/uslugi/pressoterapia.html" class="footer-nav__link">Прессотерапия</a>
-                </li>
-                <li class="footer-nav__item"><a href="/uslugi/miolifting.html" class="footer-nav__link">Миолифтинг</a>
-                </li>
-                <li class="footer-nav__item"><a href="/uslugi/sertificate.html" class="footer-nav__link">Подарочный сертификат</a>
-                </li>
-              </ul>
-            </nav><!--/ footer-nav --> 
-          </div>
+        <div class="main-footer__inner"><a class="main-footer__logo">
+          <IMG src="images/logo_light.svg"></IMG></a>
           <div class="main-footer__contacts">
-            <div class="main-footer__subtitle">Есть вопросы? Звони!
-            </div>
-            <div class="main-footer__tel">8 (812) 400 00 05
-            </div>
-            <div class="main-footer__socials"><!-- socials --> 
-              <div class="socials">
-                <div class="socials__title">Давайте дружить
-                </div>
-                <div class="socials__list"><a href="https://www.instagram.com" class="socials__link socials__link--instagram"></a><a href="https://www.vk.com" class="socials__link socials__link--vk"></a><a href="https://www.facebook.com" class="socials__link socials__link--facebook"></a><a href="https://www.youtube.com" class="socials__link socials__link--youtube"></a>
-                </div>
-              </div><!--/ socials --> 
-            </div>
+            <div class="main-footer__contacts-title">Есть вопросы? Звони!
+            </div><a href="tel:8 (812) 400 00 05" class="main-footer__tel">8 (812) 400 00 05 </a>
           </div>
-        </div>
-        <div class="main-footer__row">
-          <div class="main-footer__legalities">Имеются противопоказания. <br>Необходимо проконсультироваться со специалистом. <br> &laquo;Санатера&raquo; 2019 ©
+          <div class="main-footer__socials"><!-- socials --> 
+            <div class="socials">
+              <div class="socials__title">Следите за нами
+              </div>
+              <div class="socials__list"><a href="https://www.instagram.com" class="socials__link socials__link--instagram"></a><a href="https://www.vk.com" class="socials__link socials__link--vk"></a><a href="https://www.facebook.com" class="socials__link socials__link--facebook"></a><a href="https://www.youtube.com" class="socials__link socials__link--youtube"></a>
+              </div>
+            </div><!--/ socials --> 
+          </div>
+          <div class="main-footer__legal">
+            2019 © "Санатера"<br>
+            ООО "НК Росинновации"<br>
+            ИНН: 7810840233<br>
+            ОГРН: 1117847388713
           </div>
         </div>
       </div>

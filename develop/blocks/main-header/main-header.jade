@@ -5,7 +5,8 @@ mixin main-header()
                 +e.A.logo&attributes(attributes)
                     IMG(src="images/logo.svg")
                 +e.info
-                    include ../../../app/images/point.svg
+                    .icon
+                        include ../../../app/images/point.svg
                     +e.address г. Санкт-Петербург, м.&nbsp;Маяковская, Невский&nbsp;проспект, 61 (вход со двора)
                     +e.shedule с 8:00 до 22:00, приём заявок круглосуточно
-                +e.A.phone(href='telto: +7 (812) 421-74-97') +7 (812) 421-74-97
+                +e.A.phone(href='tel: +7 (812) 421-74-97') +7 (812) 421-74-97

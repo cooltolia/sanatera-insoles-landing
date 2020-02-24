@@ -1,6 +1,6 @@
-mixin socials()
+mixin socials(title = 'Давайте дружить')
     +b.socials
-        +e.title Давайте дружить
+        +e.title !{title}
         +e.list
             +e.A.link.--instagram(href='https://www.instagram.com')
             +e.A.link.--vk(href='https://www.vk.com')
