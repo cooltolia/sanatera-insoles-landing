@@ -3,12 +3,12 @@
     var $nav = $('.main-header__navigation');
     var headerHeight = $header.outerHeight(true);
 
-    // if (window.matchMedia("(max-width: 767px)").matches) {
-    //     $nav.css({
-    //         'top': headerHeight + 'px',
-    //         'padding-bottom': headerHeight + 'px'
-    //     });
-    // }
+    if (window.matchMedia("(max-width: 767px)").matches) {
+        $nav.css({
+            'top': headerHeight + 'px',
+            'padding-bottom': headerHeight + 'px'
+        });
+    }
     var lastPos = 0;
     $(document).on('scroll', function(e) {
         var scrollTop = $(this).scrollTop();

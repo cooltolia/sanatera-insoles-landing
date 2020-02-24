@@ -1,6 +1,6 @@
 $.noConflict();
-jQuery(document).ready(function ($) {
-    $("body").removeClass("pageload");
+jQuery(document).ready(function($) {
+    $('body').removeClass('pageload');
 
     function measureScrollBar() {
         var scrollDiv = document.createElement('div');
@@ -11,11 +11,11 @@ jQuery(document).ready(function ($) {
         return scrollbarWidth;
     }
 
-    // $header = $('.main-header');
-    // if ($header.length === 1) {
-    //     headerHeight = $header.outerHeight();
-    //     $('body').css('padding-top', headerHeight + 'px');
-    // }
+    $header = $('.main-header');
+    if ($header.length === 1 && window.matchMedia('(max-width: 767px)').matches) {
+        headerHeight = $header.outerHeight();
+        $('body').css('padding-top', headerHeight + 'px');
+    }
 
     
 
@@ -118,6 +118,55 @@ jQuery(document).ready(function ($) {
     
 
     
+    (function() {
+
+        if (window.matchMedia('(max-width: 767px)').matches) {
+
+            var $hamburger = $('.hamburger');
+
+            var $nav = $('.main-header__navigation');
+
+            var $links = $('.main-nav a');
+
+    
+
+            $hamburger.click(function() {
+
+                $(this).toggleClass('active');
+
+                $nav.toggleClass('active');
+
+                $('body').toggleClass('menu-opened');
+
+            });
+
+    
+
+            $links.on('click', function() {
+
+                $hamburger.removeClass('active');
+
+                $nav.removeClass('active');
+
+                $('body').removeClass('menu-opened');
+
+                
+
+                var target = this.hash
+
+    
+
+                $('html, body').animate({ scrollTop: $(target).offset().top }, 1000);
+
+            });
+
+        }
+
+    })();
+
+    
+
+    
     
 
     
@@ -137,17 +186,17 @@ jQuery(document).ready(function ($) {
 
     
 
-        // if (window.matchMedia("(max-width: 767px)").matches) {
+        if (window.matchMedia("(max-width: 767px)").matches) {
 
-        //     $nav.css({
+            $nav.css({
 
-        //         'top': headerHeight + 'px',
+                'top': headerHeight + 'px',
 
-        //         'padding-bottom': headerHeight + 'px'
+                'padding-bottom': headerHeight + 'px'
 
-        //     });
+            });
 
-        // }
+        }
 
         var lastPos = 0;
 
@@ -194,6 +243,31 @@ jQuery(document).ready(function ($) {
     })();
 
     
+
+    
+    ;(function() {
+
+        $linksToSubnav = $('.main-nav__link.hasSubnav');
+
+    
+
+        if (window.matchMedia("(max-width: 767px)").matches) {
+
+            $linksToSubnav.each(function(i, item) {
+
+                $(item).on('click', function() {
+
+                    var subnav = $(item).next();
+
+                    subnav.slideToggle();
+
+                })
+
+            })
+
+        }
+
+    })()
 
     
     

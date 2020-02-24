@@ -1,0 +1,14 @@
+mixin main-nav()
+    +b.NAV.main-nav
+        +e.UL.list
+            each link in mainNav
+                +e.LI.item
+                    if link.subnav
+                        +e.A.link.hasSubnav #{link.text}
+                        +e.subnav
+                            +e.UL.subnav-list
+                                each sublink, index in link.subnav
+                                    +e.LI.subnav-item
+                                        +e.A.subnav-link(href="#{sublink.url}") #{sublink.text}
+                    else
+                        +e.A.link(href="#{link.url}") #{link.text}

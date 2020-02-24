@@ -223,69 +223,19 @@
 	},
 	"mainNav": [
 		{
-			"url": "/uslugi",
-			"text": "Услуги",
-			"subnav": [
-				{
-					"url": "/uslugi/uzi.html",
-					"text": "УЗИ"
-				},
-				{
-					"url": "/uslugi/stelki.html",
-					"text": "Стельки"
-				},
-				{
-					"url": "/uslugi/ortoped.html",
-					"text": "Ортопед"
-				},
-				{
-					"url": "/uslugi/manualka.html",
-					"text": "Мануальная терапия"
-				},
-				{
-					"url": "/uslugi/massage.html",
-					"text": "Массаж"
-				},
-				{
-					"url": "/uslugi/pedicure.html",
-					"text": "Аппаратный педикюр"
-				},
-				{
-					"url": "/uslugi/diagnostika.html",
-					"text": "Диагностика"
-				},
-				{
-					"url": "/uslugi/uvt.html",
-					"text": "УВТ"
-				},
-				{
-					"url": "/uslugi/pressoterapia.html",
-					"text": "Прессотерапия"
-				},
-				{
-					"url": "/uslugi/miolifting.html",
-					"text": "Миолифтинг"
-				},
-				{
-					"url": "/uslugi/sertificate.html",
-					"text": "Подарочный сертификат"
-				}
-			]
+			"url": "#",
+			"text": "Что-то"
 		},
 		{
-			"url": "/about.html",
-			"text": "О центре"
+			"url": "#",
+			"text": "Еще это"
 		},
 		{
-			"url": "/testimonials.html",
-			"text": "Отзывы"
+			"url": "#",
+			"text": "И это"
 		},
 		{
-			"url": "/blog.html",
-			"text": "Блог"
-		},
-		{
-			"url": "#contacts",
+			"url": "#map",
 			"text": "Контакты"
 		}
 	],

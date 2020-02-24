@@ -1,6 +1,6 @@
 $.noConflict();
-jQuery(document).ready(function ($) {
-    $("body").removeClass("pageload");
+jQuery(document).ready(function($) {
+    $('body').removeClass('pageload');
 
     function measureScrollBar() {
         var scrollDiv = document.createElement('div');
@@ -11,11 +11,11 @@ jQuery(document).ready(function ($) {
         return scrollbarWidth;
     }
 
-    // $header = $('.main-header');
-    // if ($header.length === 1) {
-    //     headerHeight = $header.outerHeight();
-    //     $('body').css('padding-top', headerHeight + 'px');
-    // }
+    $header = $('.main-header');
+    if ($header.length === 1 && window.matchMedia('(max-width: 767px)').matches) {
+        headerHeight = $header.outerHeight();
+        $('body').css('padding-top', headerHeight + 'px');
+    }
 
-    //=require ../blocks/**/*.js 
+    //=require ../blocks/**/*.js
 });

@@ -2,6 +2,8 @@ mixin main-header()
     +b.HEADER.main-header
         +inner
             +e.inner
+                +e.hamburger
+                    +hamburger
                 +e.A.logo&attributes(attributes)
                     IMG(src="images/logo.svg")
                 +e.info
@@ -10,3 +12,5 @@ mixin main-header()
                     +e.address г. Санкт-Петербург, м.&nbsp;Маяковская, Невский&nbsp;проспект, 61 (вход со двора)
                     +e.shedule с 8:00 до 22:00, приём заявок круглосуточно
                 +e.A.phone(href='tel: +7 (812) 421-74-97') +7 (812) 421-74-97
+                +e.navigation
+                    +main-nav
