@@ -117,13 +117,14 @@
     z-index: 9;
     margin: auto;
     display: inline-block;
+    padding: 5px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 
     color: #fff;
     font-size: 14px;
-    font-weight: 700;
+    font-weight: 500;
     text-align: center;
     text-shadow: 1px 1px 1px #000000;
 }
@@ -262,6 +263,8 @@
     }
 
     .problems-slider__text {
+        padding: 10px;
+
         font-size: 20px;
     }
 

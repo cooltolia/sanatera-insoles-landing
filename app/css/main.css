@@ -1515,7 +1515,7 @@ th {
   font-weight: 300; }
 
 .main-header__phone {
-  display: block;
+  display: none;
   width: 16px;
   height: 16px;
   background-image: url(../images/phone.svg);
@@ -1523,10 +1523,8 @@ th {
   background-position: center;
   background-repeat: no-repeat;
   font-size: 0; }
-  .main-header__phone:hover, .main-header__phone:active, .main-header__phone:focus {
-    color: #fff;
-    background-color: #d60623;
-    text-decoration: none; }
+  .main-header__phone--mobile {
+    display: block; }
 
 .main-header__navigation {
   opacity: 0;
@@ -1605,6 +1603,12 @@ th {
     -moz-transition: all 300ms ease;
     transition: all 300ms ease;
     background-image: none; }
+    .main-header__phone:hover, .main-header__phone:active, .main-header__phone:focus {
+      color: #fff;
+      background-color: #d60623;
+      text-decoration: none; }
+    .main-header__phone--mobile {
+      display: none; }
   .main-header__navigation {
     display: none; }
   .main-header__hamburger {
@@ -2061,8 +2065,8 @@ th {
   font-family: Roboto, Helvetica, Arial, sans-serif; }
 
 .modal-dialog {
-  width: 80%;
-  max-width: 480px;
+  width: 90%;
+  max-width: 300px;
   margin: 0 auto;
   margin-top: 50px; }
 
@@ -2072,7 +2076,7 @@ th {
     position: absolute;
     z-index: 99;
     top: 10px;
-    right: 25px;
+    right: 20px;
     font-size: 30px;
     font-weight: 100;
     -webkit-appearance: none;
@@ -2094,12 +2098,12 @@ th {
   background-color: #fff; }
 
 .modal-form {
-  padding: 35px 20px 25px;
+  padding: 15px 20px 25px;
   max-width: 420px;
   margin: 0 auto; }
 
 .modal-input-row {
-  margin-bottom: 30px; }
+  margin-bottom: 6px; }
 
 .modal-label {
   margin-bottom: 10px;
@@ -2114,14 +2118,14 @@ th {
   border: 1px solid #dcdcdc;
   background-color: #fff;
   color: #131313;
-  font-size: 15px;
+  font-size: 12px;
   font-weight: 300; }
   .modal-input::-webkit-input-placeholder {
-    color: #1f1f1f; }
+    color: #9e9e9e; }
   .modal-input:-ms-input-placeholder {
-    color: #1f1f1f; }
+    color: #9e9e9e; }
   .modal-input::placeholder {
-    color: #1f1f1f; }
+    color: #9e9e9e; }
 
 .modal-submit {
   position: relative;
@@ -2140,13 +2144,15 @@ th {
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
-  padding: 9px 15px;
+  margin-bottom: 8px;
+  width: 100%;
+  height: 28px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
   color: #fff;
-  font-size: 16px;
-  font-weight: 400;
-  margin: 0 auto;
-  border-radius: 50px;
   border: 1px solid #d60623;
+  border-radius: 3px;
   background-color: #d60623;
   -webkit-transition: all 300ms ease;
   -moz-transition: all 300ms ease;
@@ -2154,6 +2160,48 @@ th {
   .modal-submit:hover {
     color: #000;
     background-color: transparent; }
+
+.modal-agreement {
+  position: relative;
+  margin: 0 auto; }
+  .modal-agreement input {
+    z-index: -1;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    -webkit-clip-path: inset(100%);
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden; }
+  .modal-agreement label {
+    display: block;
+    position: relative;
+    padding-left: 18px;
+    color: #9e9e9e;
+    font-size: 10px;
+    line-height: 1.2;
+    font-weight: 400;
+    text-align: left;
+    cursor: pointer; }
+    .modal-agreement label::before {
+      content: '';
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      left: 0;
+      top: 2px;
+      background-color: #fff;
+      border: 1px solid #d60623;
+      border-radius: 2px;
+      -webkit-transition: background-color 300ms ease;
+      -moz-transition: background-color 300ms ease;
+      transition: background-color 300ms ease; }
+  .modal-agreement input:checked + label::before {
+    background-color: #d60623; }
 
 body.modal-open {
   overflow: auto !important;
@@ -2255,9 +2303,24 @@ body.modal-open {
     width: 100px; } }
 
 @media (min-width: 1240px) {
+  .modal-dialog {
+    max-width: 340px; }
   .modal-submit {
-    padding: 12px 20px;
-    font-size: 18px; } }
+    height: 40px;
+    margin-bottom: 20px;
+    font-size: 14px; }
+  .modal-input-row {
+    margin-bottom: 8px; }
+  .modal-input {
+    padding: 16px 18px;
+    font-size: 14px; }
+  .modal-agreement label {
+    padding-left: 24px;
+    font-size: 12px; }
+    .modal-agreement label::before {
+      width: 14px;
+      height: 14px;
+      border-radius: 4px; } }
 
 .problems-slider {
   width: 100%;
@@ -2370,6 +2433,7 @@ body.modal-open {
   z-index: 9;
   margin: auto;
   display: inline-block;
+  padding: 5px;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
@@ -2378,7 +2442,7 @@ body.modal-open {
           transform: translate(-50%, -50%);
   color: #fff;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 500;
   text-align: center;
   text-shadow: 1px 1px 1px #000000; }
 
@@ -2466,6 +2530,7 @@ body.modal-open {
   .problems-slider__item {
     margin-bottom: 30px; }
   .problems-slider__text {
+    padding: 10px;
     font-size: 20px; }
   .problems-slider__modal .modal-dialog {
     width: 80%;
@@ -2511,7 +2576,8 @@ body.modal-open {
     margin-bottom: 8px;
     border-radius: 7px;
     -webkit-box-shadow: 0px 1px 2px rgba(74, 74, 74, 0.5);
-            box-shadow: 0px 1px 2px rgba(74, 74, 74, 0.5); }
+            box-shadow: 0px 1px 2px rgba(74, 74, 74, 0.5);
+    background-color: #fff; }
     .quiz__question-answer:last-child {
       margin-bottom: 0; }
     .quiz__question-answer input {
@@ -3253,7 +3319,7 @@ body.modal-open {
   width: 240px;
   border-radius: 5px;
   font-size: 14px;
-  font-weight: 900;
+  font-weight: 700;
   text-transform: uppercase; }
   .sockliners-slider__order:hover, .sockliners-slider__order:active, .sockliners-slider__order:focus {
     text-decoration: none;
@@ -3664,7 +3730,7 @@ body.modal-open {
   padding: 11px;
   margin: 0 auto;
   font-size: 14px;
-  font-weight: 900;
+  font-weight: 700;
   text-transform: uppercase;
   border-radius: 7px;
   -webkit-box-shadow: 3px 1px 16px rgba(215, 0, 0, 0.5);
@@ -4012,7 +4078,7 @@ body.modal-open {
   width: 260px;
   margin: 0 auto 24px;
   font-size: 16px;
-  font-weight: 900;
+  font-weight: 700;
   color: #ffffff;
   text-transform: uppercase;
   border-radius: 7px; }

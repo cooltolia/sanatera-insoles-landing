@@ -9,7 +9,7 @@
     <title>Sanatera – медицинский центр</title>
     <link rel="icon" href="/js.png" type="image/x-icon"/>
     <link rel="stylesheet" href="css/vendor.css?1a74405153">
-    <link rel="stylesheet" href="css/main.css?1877c2b885">
+    <link rel="stylesheet" href="css/main.css?e595a0f3a9">
     <!--[if lte IE 9]>
     <script src="libs/ie/html5shiv.js"></script>
     <script src="libs/ie/respond.src.js"></script>
@@ -43,7 +43,7 @@
             </div>
             <div class="main-header__shedule">с 8:00 до 22:00, приём заявок круглосуточно
             </div>
-          </div><a href="tel: +7 (812) 421-74-97" class="main-header__phone">+7 (812) 421-74-97</a>
+          </div><a href="#modal1" data-toggle="modal" data-target="#modal1" data-button="Заказать звонок" class="main-header__phone">+7 (812) 421-74-97</a><a href="tel:+7 (812) 421-74-97" class="main-header__phone main-header__phone--mobile">+7 (812) 421-74-97</a>
           <div class="main-header__navigation"><!-- main-nav --> 
             <nav class="main-nav">
               <ul class="main-nav__list">
@@ -695,7 +695,7 @@
               </li>
             </ul>
           </div>
-        </div><a href="#modal1" data-toggle="modal" data-target="#modal1" class="steps-stelki__button">Записаться на прием</a>
+        </div><a href="#modal1" data-toggle="modal" data-target="#modal1" data-button="Записаться" class="steps-stelki__button">Записаться на прием</a>
       </div>
     </section><!--/ steps-stelki --> <!-- specialists --> 
     <section class="specialists">
@@ -1066,20 +1066,22 @@
           <div class="modal-body">
             <form name="form1" class="modal-form">
               <div class="modal-input-row">
-                <label for="modal_name" class="modal-label">Имя</label>
-                <input type="text" id="modal_name" name="modal_name" class="modal-input"/>
+                <input type="text" id="modal_name" name="modal_name" placeholder="Ваше имя" class="modal-input"/>
               </div>
               <div class="modal-input-row">
-                <label for="modal_tel" class="modal-label">Телефон</label>
-                <input type="text" id="modal_tel" data-inputmask="'mask': '+7(999)-999-99-99'" name="modal_tel" required="required" placeholder="+7 (___) ___ __ __" class="modal-input"/>
+                <input type="text" id="modal_tel" name="modal_tel" required="required" placeholder="Ваш номер телефона" class="modal-input"/>
               </div>
               <button class="modal-submit"></button>
+              <div class="modal-agreement">
+                <input type="checkbox" name="modal_agreement" id="modal_agreement" checked="" required=""/>
+                <label for="modal_agreement">Подтверждаю, что я ознакомлен с политикой конфиденциальности и даю свое согласие на сбор и обработку персональных данных</label>
+              </div>
             </form>
           </div>
         </div>
       </div>
     </div>
     <script src="js/vendor.js?a2fff546b3"></script>
-    <script src="js/main.js?0ba72c9a83"></script>
+    <script src="js/main.js?360e37c7d0"></script>
   </body>
 </html>

@@ -85,7 +85,12 @@
 }
 
 .main-header__phone {
-    display: block;
+    display: none;
+
+    &--mobile {
+        display: block;
+    }
+
     width: 16px;
     height: 16px;
     background-image: url(../images/phone.svg);
@@ -94,14 +99,6 @@
     background-repeat: no-repeat;
 
     font-size: 0;
-
-    &:hover,
-    &:active,
-    &:focus {
-        color: #fff;
-        background-color: $themecolor;
-        text-decoration: none;
-    }
 }
 
 .main-header__navigation {
@@ -177,6 +174,18 @@
         transition: all 300ms ease;
 
         background-image: none;
+
+        &:hover,
+        &:active,
+        &:focus {
+            color: #fff;
+            background-color: $themecolor;
+            text-decoration: none;
+        }
+
+        &--mobile {
+            display: none;
+        }
     }
 
     .main-header__navigation {

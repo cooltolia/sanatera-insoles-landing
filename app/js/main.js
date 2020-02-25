@@ -186,13 +186,13 @@ jQuery(document).ready(function($) {
 
     
 
-        if (window.matchMedia("(max-width: 767px)").matches) {
+        if (window.matchMedia('(max-width: 767px)').matches) {
 
             $nav.css({
 
-                'top': headerHeight + 'px',
+                top: headerHeight + 'px',
 
-                'padding-bottom': headerHeight + 'px'
+                'padding-bottom': headerHeight + 'px',
 
             });
 
@@ -270,15 +270,13 @@ jQuery(document).ready(function($) {
     })()
 
     
-    
-
-    $(window).on('load', function () {
+    $(window).on('load', function() {
 
         var mapContainer = $('#map');
 
         if (mapContainer.length === 0) return;
 
-        
+    
 
         var zoom = 17;
 
@@ -316,9 +314,7 @@ jQuery(document).ready(function($) {
 
         if ($(window).width() <= '767') {
 
-            $header.on('click', function () {
-
-    
+            $header.on('click', function() {
 
                 if ($header.hasClass('js-expanded')) {
 
@@ -334,7 +330,7 @@ jQuery(document).ready(function($) {
 
                 }
 
-            })
+            });
 
         }
 
@@ -344,7 +340,7 @@ jQuery(document).ready(function($) {
 
         var check_if_load = false;
 
-        var TRY = 1
+        var TRY = 1;
 
     
 
@@ -354,7 +350,7 @@ jQuery(document).ready(function($) {
 
                 // console.log('Попытка номер ' + TRY);
 
-                TRY++
+                TRY++;
 
                 return ymap();
 
@@ -362,67 +358,73 @@ jQuery(document).ready(function($) {
 
     
 
-            ymaps.ready(function () {
+            ymaps.ready(function() {
 
                 var myMap;
 
-                var pointA = "Санкт-Петербург, метро Маяковская",
+                var pointA = 'Санкт-Петербург, метро Маяковская',
 
                     pointB = adress,
 
-                    multiRoute = new ymaps.multiRouter.MultiRoute({
+                    multiRoute = new ymaps.multiRouter.MultiRoute(
 
-                        referencePoints: [
+                        {
 
-                            pointA,
+                            referencePoints: [pointA, pointB],
 
-                            pointB
+                            params: {
 
-                        ],
+                                //Тип маршрутизации - пешеходная маршрутизация.
 
-                        params: {
+                                routingMode: 'pedestrian',
 
-                            //Тип маршрутизации - пешеходная маршрутизация.
-
-                            routingMode: 'pedestrian',
+                            },
 
                         },
 
-                    }, {
+                        {
 
-                        // Автоматически устанавливать границы карты так, чтобы маршрут был виден целиком.
+                            // Автоматически устанавливать границы карты так, чтобы маршрут был виден целиком.
 
-                        //boundsAutoApply: true
+                            //boundsAutoApply: true
 
-                        wayPointIconLayout: "none",
+                            wayPointIconLayout: 'none',
 
-                        routeActivePedestrianSegmentStrokeStyle: "solid",
+                            routeActivePedestrianSegmentStrokeStyle: 'solid',
 
-                        routeActivePedestrianSegmentStrokeColor: "#ff0000"
+                            routeActivePedestrianSegmentStrokeColor: '#ff0000',
 
-                    });
+                        }
+
+                    );
 
                 // ymaps.geocode(adress).then(function (res) {
 
                 //     console.log(res.geoObjects.get(0).geometry.getCoordinates());
 
-                    
+    
 
-                    myMap = new ymaps.Map('map', {
+                myMap = new ymaps.Map('map', {
 
-                        center: center,
+                    center: center,
 
-                        zoom: zoom
+                    zoom: zoom,
 
-                    });
+                });
 
-                    var myPlacemark = new ymaps.Placemark(adress, {
+                var myPlacemark = new ymaps.Placemark(
+
+                    adress,
+
+                    {
 
                         hintContent: 'г. Санкт-Петербург, ст. м. Маяковская, Невский проспект 61 (вход со двора)',
 
-                        balloonContent: 'г. Санкт-Петербург, ст. м. Маяковская, Невский проспект 61 (вход со двора)'
+                        balloonContent: 'г. Санкт-Петербург, ст. м. Маяковская, Невский проспект 61 (вход со двора)',
 
-                    }, {
+                    },
+
+                    {
 
                         // Опции.
 
@@ -442,57 +444,53 @@ jQuery(document).ready(function($) {
 
                         // её "ножки" (точки привязки).
 
-                        iconImageOffset: [-15, -30]
+                        iconImageOffset: [-15, -30],
 
-                    });
+                    }
 
-    
-
-                    var layer = myMap.layers.get(0).get(0);
-
-                    // Отслеживаем событие окончания отрисовки тайлов.
-
-                    waitForTilesLoad(layer).then(function () {
-
-                        console.log('Карта загружена');
-
-                    });
+                );
 
     
 
-    
+                var layer = myMap.layers.get(0).get(0);
 
-                    myMap.geoObjects.add(myPlacemark);
+                // Отслеживаем событие окончания отрисовки тайлов.
 
-                    myMap.geoObjects.add(multiRoute);
+                waitForTilesLoad(layer).then(function() {
 
-                    myMap.behaviors.disable('scrollZoom');
+                    console.log('Карта загружена');
 
                 });
 
     
 
+                myMap.geoObjects.add(myPlacemark);
+
+                myMap.geoObjects.add(multiRoute);
+
+                myMap.behaviors.disable('scrollZoom');
+
+            });
+
+    
+
             // });
-
-    
-
-    
 
         }
 
     
 
-        // Функция для определения полной загрузки карты (на самом деле проверяется загрузка тайлов) 
+        // Функция для определения полной загрузки карты (на самом деле проверяется загрузка тайлов)
 
         function waitForTilesLoad(layer) {
 
-            return new ymaps.vow.Promise(function (resolve, reject) {
+            return new ymaps.vow.Promise(function(resolve, reject) {
 
                 var tc = getTileContainer(layer),
 
                     readyAll = true;
 
-                tc.tiles.each(function (tile, number) {
+                tc.tiles.each(function(tile, number) {
 
                     if (!tile.isReady()) {
 
@@ -508,7 +506,7 @@ jQuery(document).ready(function($) {
 
                 } else {
 
-                    tc.events.once("ready", function () {
+                    tc.events.once('ready', function() {
 
                         resolve();
 
@@ -554,17 +552,17 @@ jQuery(document).ready(function($) {
 
         function loadScript(url, callback) {
 
-            var script = document.createElement("script");
+            var script = document.createElement('script');
 
     
 
-            if (script.readyState) { // IE
+            if (script.readyState) {
 
-                script.onreadystatechange = function () {
+                // IE
 
-                    if (script.readyState == "loaded" ||
+                script.onreadystatechange = function() {
 
-                        script.readyState == "complete") {
+                    if (script.readyState == 'loaded' || script.readyState == 'complete') {
 
                         script.onreadystatechange = null;
 
@@ -574,9 +572,11 @@ jQuery(document).ready(function($) {
 
                 };
 
-            } else { // Другие браузеры
+            } else {
 
-                script.onload = function () {
+                // Другие браузеры
+
+                script.onload = function() {
 
                     callback();
 
@@ -588,7 +588,7 @@ jQuery(document).ready(function($) {
 
             script.src = url;
 
-            document.getElementsByTagName("head")[0].appendChild(script);
+            document.getElementsByTagName('head')[0].appendChild(script);
 
         }
 
@@ -596,132 +596,168 @@ jQuery(document).ready(function($) {
 
         // Основная функция, которая проверяет когда мы навели на блок с классом "ymap-container"
 
-        var ymap = function () {
+        var ymap = function() {
 
-    
+            loadScript(
 
-            loadScript("https://api-maps.yandex.ru/2.1/?apikey=2efe2353-6e9b-4f4f-8804-395887835361&lang=ru_RU&load=Map&loadByRequire=1", function () {
+                'https://api-maps.yandex.ru/2.1/?apikey=2efe2353-6e9b-4f4f-8804-395887835361&lang=ru_RU&load=Map&loadByRequire=1',
 
-                ymaps.load(init);
+                function() {
 
-            });
-
-        }
-
-    
-
-        $(function () {
-
-            ymap();
-
-    
-
-        });
-
-    })
-
-    
-
-    
-    
-
-    ;(function() {
-
-        $modal = $('#modal1');
-
-        $modal.on("show.bs.modal", function (event) {
-
-                var invoker = $(event.relatedTarget);
-
-    
-
-                var xhr = new XMLHttpRequest();
-
-    
-
-                var currentModal = $(this);
-
-                var currentForm = $(this).find('form');
-
-                var formName = currentForm.attr('name');
-
-    
-
-                var firstInput = $(this).find('input')[0];
-
-                if (firstInput) {
-
-                    firstInput.focus()
+                    ymaps.load(init);
 
                 }
 
-    
+            );
+
+        };
 
     
 
-                var mobileInput = $(this).find('input[name="phone"]');
+        $(function() {
 
-                var submit = $(this).find('.modal-submit');
+            ymap();
 
-    
+        });
 
-                var invokerText = invoker.data('button');
-
-                submit.text(invokerText || 'Отправить');
+    });
 
     
 
-                currentForm.on('submit', function (e) {
+    
+    (function() {
 
-                    e.preventDefault();
+        $modal = $('#modal1');
+
+        $modal.on('show.bs.modal', function(event) {
+
+            var invoker = $(event.relatedTarget);
 
     
 
-                    xhr.onreadystatechange = function () {
+            function inputPhoneValidate() {
 
-                        if (xhr.readyState === 4) {
+                debugger;
 
-                            mobileInput.val('');
+                var enteredPhone = inputPhone.val();
 
-                            submit.removeClass("loading");
+                return Inputmask.isValid(enteredPhone, {
 
-    
-
-                            if (xhr.status === 200) {
-
-                                $('#success').modal();
-
-                                currentForm.off()
-
-                            } else {
-
-                                currentForm.off()
-
-                                alert("Возникла ошибка при отправке формы. Код ошибки: " + xhr.status + " " + xhr.statusText);
-
-                            }
-
-                        }
-
-                    };
-
-    
-
-                    currentModal.modal('hide');
-
-                    var formData = new FormData(document.forms[formName]);
-
-                    xhr.open("POST", "sendform.php", true);
-
-                    xhr.send(formData);
+                    mask: phoneMask,
 
                 });
+
+            }
+
+    
+
+            var phoneMask = '+7 (999) 999-99-99';
+
+            var inputPhone = $('#modal_tel');
+
+            inputPhone.inputmask({
+
+                mask: phoneMask,
+
+                showMaskOnHover: false,
 
             });
 
     
 
-    })()
+            var xhr = new XMLHttpRequest();
+
+    
+
+            var currentModal = $(this);
+
+            var currentForm = $(this).find('form');
+
+            var formName = currentForm.attr('name');
+
+    
+
+            var firstInput = $(this).find('input')[0];
+
+            if (firstInput) {
+
+                firstInput.focus();
+
+            }
+
+    
+
+            var mobileInput = $(this).find('input[name="phone"]');
+
+            var submit = $(this).find('.modal-submit');
+
+    
+
+            var invokerText = invoker.data('button');
+
+            submit.text(invokerText || 'Отправить');
+
+    
+
+            currentForm.on('submit', function(e) {
+
+                e.preventDefault();
+
+    
+
+                var phoneValid = inputPhoneValidate();
+
+                debugger;
+
+                if (!phoneValid) return;
+
+    
+
+                xhr.onreadystatechange = function() {
+
+                    if (xhr.readyState === 4) {
+
+                        mobileInput.val('');
+
+                        submit.removeClass('loading');
+
+    
+
+                        if (xhr.status === 200) {
+
+                            $('#success').modal();
+
+                            currentForm.off();
+
+                        } else {
+
+                            currentForm.off();
+
+                            alert('Возникла ошибка при отправке формы. Код ошибки: ' + xhr.status + ' ' + xhr.statusText);
+
+                        }
+
+                    }
+
+                };
+
+    
+
+                currentModal.modal('hide');
+
+                var formData = new FormData(document.forms[formName]);
+
+                xhr.open('POST', 'sendform.php', true);
+
+                xhr.send(formData);
+
+            });
+
+        });
+
+    })();
+
+    
 
     
     ;
@@ -824,10 +860,6 @@ jQuery(document).ready(function($) {
 
     
     (function() {
-
-        $(':input').inputmask();
-
-    
 
         function inputPhoneValidate() {
 
@@ -1011,7 +1043,7 @@ jQuery(document).ready(function($) {
 
             var phoneValid = inputPhoneValidate();
 
-            if (!phoneValid) return
+            if (!phoneValid) return;
 
     
 
@@ -1027,19 +1059,41 @@ jQuery(document).ready(function($) {
 
                 success: function(data) {
 
-                    /** do something, I guess */
+                    afterSubmit();
 
                 },
 
                 error: function(data) {
 
-                    alert('Тут, полагаю, нужна модалка')
+                    afterSubmit();
 
-                }
+                    alert('Форме пока некуда уйти');
+
+                },
 
             });
 
         });
+
+    
+
+        function afterSubmit() {
+
+            $('.quiz__question-text').hide();
+
+            $('.quiz__question-phone').hide();
+
+            $('.quiz__submit').hide();
+
+    
+
+            $('.quiz__question-title').text('Спасибо, мы уже изучаем ваши ответы и свяжемся в течение 5 минут');
+
+    
+
+            quizSlider.slick('setPosition')
+
+        }
 
     
 

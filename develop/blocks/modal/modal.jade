@@ -17,9 +17,10 @@ mixin modal()
                 .modal-body
                     form.modal-form(name='form1')
                         .modal-input-row
-                            label.modal-label(for='modal_name') Имя
-                            input.modal-input(type='text' id='modal_name' name='modal_name')
+                            input.modal-input(type='text' id='modal_name' name='modal_name' placeholder='Ваше имя')
                         .modal-input-row
-                            label.modal-label(for='modal_tel') Телефон
-                            input.modal-input(type='text' id='modal_tel' data-inputmask="'mask': '+7(999)-999-99-99'" name='modal_tel' required placeholder='+7 (___) ___ __ __')
+                            input.modal-input(type='text' id='modal_tel' name='modal_tel' required placeholder='Ваш номер телефона')
                         button.modal-submit
+                        +e.modal-agreement
+                            input(type='checkbox' name='modal_agreement' id='modal_agreement' checked='' required='')
+                            label(for='modal_agreement') Подтверждаю, что я ознакомлен с политикой конфиденциальности и даю свое согласие на сбор и обработку персональных данных

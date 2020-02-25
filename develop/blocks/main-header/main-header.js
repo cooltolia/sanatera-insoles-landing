@@ -3,10 +3,10 @@
     var $nav = $('.main-header__navigation');
     var headerHeight = $header.outerHeight(true);
 
-    if (window.matchMedia("(max-width: 767px)").matches) {
+    if (window.matchMedia('(max-width: 767px)').matches) {
         $nav.css({
-            'top': headerHeight + 'px',
-            'padding-bottom': headerHeight + 'px'
+            top: headerHeight + 'px',
+            'padding-bottom': headerHeight + 'px',
         });
     }
     var lastPos = 0;

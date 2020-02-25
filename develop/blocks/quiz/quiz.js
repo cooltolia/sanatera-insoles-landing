@@ -1,6 +1,4 @@
 (function() {
-    $(':input').inputmask();
-
     function inputPhoneValidate() {
         var enteredPhone = inputPhone.val();
         return Inputmask.isValid(enteredPhone, {
@@ -92,7 +90,7 @@
         e.preventDefault();
 
         var phoneValid = inputPhoneValidate();
-        if (!phoneValid) return
+        if (!phoneValid) return;
 
         const data = $(this).serialize();
         $.ajax({
@@ -100,13 +98,24 @@
             url: '/sendmail.php',
             data: data,
             success: function(data) {
-                /** do something, I guess */
+                afterSubmit();
             },
             error: function(data) {
-                alert('Тут, полагаю, нужна модалка')
-            }
+                afterSubmit();
+                alert('Форме пока некуда уйти');
+            },
         });
     });
+
+    function afterSubmit() {
+        $('.quiz__question-text').hide();
+        $('.quiz__question-phone').hide();
+        $('.quiz__submit').hide();
+
+        $('.quiz__question-title').text('Спасибо, мы уже изучаем ваши ответы и свяжемся в течение 5 минут');
+
+        quizSlider.slick('setPosition')
+    }
 
     function updateStatus(slideIndex, totalSlides) {
         var currentSlide = slideIndex + 1;
