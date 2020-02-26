@@ -1,8 +1,18 @@
 .hamburger {
+    position: relative;
     width: 16px;
 
     &:hover {
         cursor: pointer;
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        width: 300%;
+        height: 300%;
+        left: -100%;
+        top: -100%;
     }
 }
 

@@ -1123,9 +1123,17 @@ th {
     font-size: 18px; } }
 
 .hamburger {
+  position: relative;
   width: 16px; }
   .hamburger:hover {
     cursor: pointer; }
+  .hamburger::before {
+    content: '';
+    position: absolute;
+    width: 300%;
+    height: 300%;
+    left: -100%;
+    top: -100%; }
 
 .hamburger__line {
   width: 100%;
@@ -1524,7 +1532,15 @@ th {
   background-repeat: no-repeat;
   font-size: 0; }
   .main-header__phone--mobile {
-    display: block; }
+    display: block;
+    position: relative; }
+    .main-header__phone--mobile::before {
+      content: '';
+      position: absolute;
+      width: 300%;
+      height: 300%;
+      left: -100%;
+      top: -100%; }
 
 .main-header__navigation {
   opacity: 0;
