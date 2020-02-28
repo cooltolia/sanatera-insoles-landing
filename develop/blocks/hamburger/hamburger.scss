@@ -1,6 +1,6 @@
 .hamburger {
     position: relative;
-    width: 16px;
+    width: 22px;
 
     &:hover {
         cursor: pointer;
@@ -21,7 +21,7 @@
     height: 2px;
     background-color: $themecolor;
     display: block;
-    margin: 0 auto 3px;
+    margin: 0 auto 4px;
 
     transition: all 300ms ease;
 
@@ -44,6 +44,6 @@
 
 .hamburger.active {
     .hamburger__line:nth-child(3) {
-       transform: translateY(-5px) rotate(-45deg);
+       transform: translateY(-7px) rotate(-45deg);
     }
 }
