@@ -2,22 +2,51 @@ mixin map()
     +b.map
         +e.fallback
         +e.inner#map
-            +e.info
-                +e.info-row
-                    +e.info-icon.--address
-                        include ../../../app/images/point.svg
-                    +e.info-title Адрес
-                    +e.info-value г. Санкт-Петербург, ст.м. Маяковская, Стремянная 12, вход со двора Невский проспект 61
-                +e.info-row 
-                    +e.info-icon.--time
-                        include ../../../app/images/time.svg
-                    +e.info-title График работы
-                    +e.info-value Ежедневно с 8:00 до 22:00
-                +e.info-row 
-                    +e.info-icon.--contacts
-                        include ../../../app/images/phone.svg
-                    +e.info-title Контакты
-                    +e.A.info-value.--link(href='tel:+7 (812) 421-74-99') +7 (812) 421-74-99
+            +inner
+                +e.contacts
+                    +e.contacts-switchers
+                        button(data-action='moscow') 
+                            .icon
+                                include ../../../app/images/moscow.svg
+                            | Москва
+                        button.active(data-action='spb') 
+                            .icon
+                                include ../../../app/images/spb.svg
+                            | Санкт-Петербург
+                        span.switcher
+                    +e.contacts-wrapper
+                        +e.contacts-data(data-city='moscow')
+                            +e.contacts-row
+                                +e.contacts-icon.--address
+                                    include ../../../app/images/point.svg
+                                +e.contacts-title Адрес
+                                +e.contacts-value г. Москва, м. Новослободская, БЦ "Сущевский", ул.Сущёвская, д. 12, стр. 1, 3 подъезд, 2 эт., пом. 5
+                            +e.contacts-row 
+                                +e.contacts-icon.--time
+                                    include ../../../app/images/time.svg
+                                +e.contacts-title График работы
+                                +e.contacts-value Ежедневно с 8:00 до 22:00
+                            +e.contacts-row 
+                                +e.contacts-icon.--contacts
+                                    include ../../../app/images/phone.svg
+                                +e.contacts-title Контакты
+                                +e.A.contacts-value.--link(href='tel:+7 (495) 215-25-25') +7 (495) 215-25-25
+                        +e.contacts-data.active(data-city='spb')
+                            +e.contacts-row
+                                +e.contacts-icon.--address
+                                    include ../../../app/images/point.svg
+                                +e.contacts-title Адрес
+                                +e.contacts-value г. Санкт-Петербург, ст.м. Маяковская, Стремянная 12, вход со двора Невский проспект 61
+                            +e.contacts-row 
+                                +e.contacts-icon.--time
+                                    include ../../../app/images/time.svg
+                                +e.contacts-title График работы
+                                +e.contacts-value Ежедневно с 8:00 до 22:00
+                            +e.contacts-row 
+                                +e.contacts-icon.--contacts
+                                    include ../../../app/images/phone.svg
+                                +e.contacts-title Контакты
+                                +e.A.contacts-value.--link(href='tel:+7 (812) 421-74-99') +7 (812) 421-74-99
         //- +e.FORM.form(method='post')
         //-     +e.form-title Остались еще вопросы?
         //-     +e.inputs

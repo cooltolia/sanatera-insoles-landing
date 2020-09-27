@@ -23,7 +23,7 @@ jQuery(document).ready(function($) {
     
 
     
-    (function() {
+    (function () {
 
         const comments = $('.comments');
 
@@ -32,6 +32,32 @@ jQuery(document).ready(function($) {
     
 
         const slider = $('.comments__slider');
+
+        slider.on('init', function () {
+
+            var testimonials = $('.testimonial');
+
+    
+
+            setTimeout(function () {
+
+                testimonials.each(function (_, item) {
+
+                    var testimonialContent = $(item).find('.testimonial__content');
+
+                    if (testimonialContent.length === 1) {
+
+                        new SimpleBar(testimonialContent[0]);
+
+                    }
+
+                });
+
+            }, 0);
+
+        });
+
+    
 
         slider.slick({
 
@@ -46,6 +72,8 @@ jQuery(document).ready(function($) {
         });
 
     })();
+
+    
 
     
     ;(function () {
@@ -173,10 +201,40 @@ jQuery(document).ready(function($) {
     
 
     
+    (function () {
+
+        var isMobile = window.matchMedia('(max-width: 767px)').matches;
+
+        $(window).resize(function () {
+
+            isMobile = window.matchMedia('(max-width: 767px)').matches;
+
+        });
+
+    
+
+        $('.footer-phone a').on('click', function (event) {
+
+            if (!isMobile) {
+
+                event.preventDefault();
+
+                var $this = $(this);
+
+                var target_selector = $this.attr('data-target');
+
+                $(target_selector).modal('show', $this);
+
+            }
+
+        });
+
+    })();
+
     
 
     
-    (function() {
+    (function () {
 
         var $header = $('.main-header');
 
@@ -186,21 +244,53 @@ jQuery(document).ready(function($) {
 
     
 
-        if (window.matchMedia('(max-width: 767px)').matches) {
+        var headerContacts = $('.main-header__contact');
 
-            $nav.css({
+    
 
-                top: headerHeight + 'px',
+        var isMobile = window.matchMedia('(max-width: 767px)').matches;
 
-                'padding-bottom': headerHeight + 'px',
+        $(window).resize(function () {
 
-            });
+            isMobile = window.matchMedia('(max-width: 767px)').matches;
 
-        }
+        });
+
+    
+
+        headerContacts.on('click', function (event) {
+
+            if (!isMobile) {
+
+                event.preventDefault();
+
+                var $this = $(this);
+
+                var target_selector = $this.attr('data-target');
+
+                $(target_selector).modal('show', $this);
+
+            }
+
+        });
+
+    
+
+        // if (window.matchMedia("(max-width: 767px)").matches) {
+
+        //     $nav.css({
+
+        //         'top': headerHeight + 'px',
+
+        //         'padding-bottom': headerHeight + 'px'
+
+        //     });
+
+        // }
 
         var lastPos = 0;
 
-        $(document).on('scroll', function(e) {
+        $(document).on('scroll', function (e) {
 
             var scrollTop = $(this).scrollTop();
 
@@ -232,13 +322,33 @@ jQuery(document).ready(function($) {
 
     
 
-        const mapLink = $('.main-header__info .icon');
+        var contactsTrigger = $('.main-header__trigger-contacts');
 
-        mapLink.on('click', function() {
+        var contacts = $('.main-header__contacts');
 
-            $('html, body').animate({ scrollTop: $('#map').offset().top }, 1000);
+        var contactsBackdrop = $('.main-header__contacts-backdrop');
 
-        });
+    
+
+        if (contactsTrigger.length > 0) {
+
+            contactsTrigger.on('click', function (e) {
+
+                e.preventDefault();
+
+                contacts.fadeIn(300);
+
+            });
+
+    
+
+            contactsBackdrop.on('click', function () {
+
+                contacts.fadeOut(300);
+
+            });
+
+        }
 
     })();
 
@@ -270,7 +380,47 @@ jQuery(document).ready(function($) {
     })()
 
     
-    $(window).on('load', function() {
+    function loadYandexMap(url) {
+
+        return new Promise(function (resolve) {
+
+            if (typeof ymaps !== 'undefined') {
+
+                resolve();
+
+            } else {
+
+                const yandexMapUrl = url;
+
+                // const yandexMapUrl =
+
+                //     'https://api-maps.yandex.ru/2.1/?apikey=6cabbeea-5917-4375-b061-36a551dae260&lang=ru_RU';
+
+                const yandexMapScript = document.createElement('script');
+
+                yandexMapScript.type = 'text/javascript';
+
+                yandexMapScript.src = yandexMapUrl;
+
+                document.body.appendChild(yandexMapScript);
+
+    
+
+                yandexMapScript.onload = function () {
+
+                    resolve();
+
+                };
+
+            }
+
+        });
+
+    }
+
+    
+
+    $(window).on('load', function () {
 
         var mapContainer = $('#map');
 
@@ -278,129 +428,81 @@ jQuery(document).ready(function($) {
 
     
 
+        var myMap;
+
+    
+
+        var activeCity = mapSwitching();
+
+    
+
+        loadYandexMap('https://api-maps.yandex.ru/2.1/?apikey=2efe2353-6e9b-4f4f-8804-395887835361&lang=ru_RU').then(
+
+            function () {
+
+                init();
+
+            }
+
+        );
+
+    
+
+        var placemarkOptions = {
+
+            iconLayout: 'default#image',
+
+            iconImageHref: '/images/icons/map-icon.png',
+
+            iconImageSize: [30, 30],
+
+            iconImageOffset: [-15, -30],
+
+        };
+
+    
+
+        var multiRouteOptions = {
+
+            // Автоматически устанавливать границы карты так, чтобы маршрут был виден целиком.
+
+            //boundsAutoApply: true
+
+            wayPointIconLayout: 'none',
+
+            routeActivePedestrianSegmentStrokeStyle: 'solid',
+
+            routeActivePedestrianSegmentStrokeColor: '#ff0000',
+
+        };
+
+    
+
         var zoom = 17;
 
-        var adress;
+        var spbAddress = [59.931524, 30.351719];
 
-        var center;
+        var moscowAddress = [55.78081961083188, 37.60234272023768];
 
-        adress = [59.931524, 30.351719];
-
-        center = adress;
+    
 
         if ($(window).width() < 480) {
 
             zoom = 16;
 
-            center = [59.931641, 30.353813];
+            spbAddress = [59.931641, 30.353813];
+
+            moscowAddress = [55.78059739429505, 37.60061269542307];
 
         }
-
-    
-
-        var $mapFallback = $('.map__fallback');
-
-    
-
-        /** popup */
-
-    
-
-        var $header = $('.map__info-header'),
-
-            $body = $('.map__info-body');
-
-    
-
-        if ($(window).width() <= '767') {
-
-            $header.on('click', function() {
-
-                if ($header.hasClass('js-expanded')) {
-
-                    $body.slideUp();
-
-                    $header.removeClass('js-expanded');
-
-                } else {
-
-                    $header.addClass('js-expanded');
-
-                    $body.slideDown();
-
-                }
-
-            });
-
-        }
-
-    
-
-        //Переменная для определения была ли хоть раз загружена Яндекс.Карта (чтобы избежать повторной загрузки)
-
-        var check_if_load = false;
-
-        var TRY = 1;
 
     
 
         function init() {
 
-            if (ymaps.geocode === undefined) {
+            ymaps.ready(function () {
 
-                // console.log('Попытка номер ' + TRY);
-
-                TRY++;
-
-                return ymap();
-
-            }
-
-    
-
-            ymaps.ready(function() {
-
-                var myMap;
-
-                var pointA = 'Санкт-Петербург, метро Маяковская',
-
-                    pointB = adress,
-
-                    multiRoute = new ymaps.multiRouter.MultiRoute(
-
-                        {
-
-                            referencePoints: [pointA, pointB],
-
-                            params: {
-
-                                //Тип маршрутизации - пешеходная маршрутизация.
-
-                                routingMode: 'pedestrian',
-
-                            },
-
-                        },
-
-                        {
-
-                            // Автоматически устанавливать границы карты так, чтобы маршрут был виден целиком.
-
-                            //boundsAutoApply: true
-
-                            wayPointIconLayout: 'none',
-
-                            routeActivePedestrianSegmentStrokeStyle: 'solid',
-
-                            routeActivePedestrianSegmentStrokeColor: '#ff0000',
-
-                        }
-
-                    );
-
-                // ymaps.geocode(adress).then(function (res) {
-
-                //     console.log(res.geoObjects.get(0).geometry.getCoordinates());
+                var center = activeCity === 'moscow' ? moscowAddress : spbAddress;
 
     
 
@@ -410,11 +512,13 @@ jQuery(document).ready(function($) {
 
                     zoom: zoom,
 
+                    controls: ['zoomControl'],
+
                 });
 
-                var myPlacemark = new ymaps.Placemark(
+                var spbPlacemark = new ymaps.Placemark(
 
-                    adress,
+                    spbAddress,
 
                     {
 
@@ -424,49 +528,85 @@ jQuery(document).ready(function($) {
 
                     },
 
-                    {
-
-                        // Опции.
-
-                        // Необходимо указать данный тип макета.
-
-                        iconLayout: 'default#image',
-
-                        // Своё изображение иконки метки.
-
-                        iconImageHref: 'images/icons/map-icon.png',
-
-                        // Размеры метки.
-
-                        iconImageSize: [30, 30],
-
-                        // Смещение левого верхнего угла иконки относительно
-
-                        // её "ножки" (точки привязки).
-
-                        iconImageOffset: [-15, -30],
-
-                    }
+                    placemarkOptions
 
                 );
 
     
 
-                var layer = myMap.layers.get(0).get(0);
+                var moscowPlacemark = new ymaps.Placemark(
 
-                // Отслеживаем событие окончания отрисовки тайлов.
+                    moscowAddress,
 
-                waitForTilesLoad(layer).then(function() {
+                    {
 
-                    console.log('Карта загружена');
+                        hintContent:
 
-                });
+                            'г. Москва, ст. м. Новослободская, БЦ "Сущевский", ул.Сущёвская, д. 12, стр. 1, 3 подъезд, 2 эт., пом. 5',
+
+                        balloonContent:
+
+                            'г. Москва, ст. м. Новослободская, БЦ "Сущевский", ул.Сущёвская, д. 12, стр. 1, 3 подъезд, 2 эт., пом. 5',
+
+                    },
+
+                    placemarkOptions
+
+                );
 
     
 
-                myMap.geoObjects.add(myPlacemark);
+                var spbMultiRoute = new ymaps.multiRouter.MultiRoute(
 
-                myMap.geoObjects.add(multiRoute);
+                    {
+
+                        referencePoints: ['Санкт-Петербург, метро Маяковская', spbAddress],
+
+                        params: {
+
+                            //Тип маршрутизации - пешеходная маршрутизация.
+
+                            routingMode: 'pedestrian',
+
+                        },
+
+                    },
+
+                    multiRouteOptions
+
+                );
+
+    
+
+                var moscowMultiRoute = new ymaps.multiRouter.MultiRoute(
+
+                    {
+
+                        referencePoints: ['Москва, метро Новослободская', moscowAddress],
+
+                        params: {
+
+                            //Тип маршрутизации - пешеходная маршрутизация.
+
+                            routingMode: 'pedestrian',
+
+                        },
+
+                    },
+
+                    multiRouteOptions
+
+                );
+
+    
+
+                myMap.geoObjects.add(spbPlacemark);
+
+                myMap.geoObjects.add(moscowPlacemark);
+
+                myMap.geoObjects.add(spbMultiRoute);
+
+                myMap.geoObjects.add(moscowMultiRoute);
 
                 myMap.behaviors.disable('scrollZoom');
 
@@ -480,166 +620,208 @@ jQuery(document).ready(function($) {
 
     
 
-        // Функция для определения полной загрузки карты (на самом деле проверяется загрузка тайлов)
+        function mapSwitching() {
 
-        function waitForTilesLoad(layer) {
+            var mapSwitcher = document.querySelector('.map__contacts-switchers');
 
-            return new ymaps.vow.Promise(function(resolve, reject) {
+            if (!mapSwitcher) return;
 
-                var tc = getTileContainer(layer),
+            var contactsData = Array.from(document.querySelectorAll('.map__contacts-data'));
 
-                    readyAll = true;
-
-                tc.tiles.each(function(tile, number) {
-
-                    if (!tile.isReady()) {
-
-                        readyAll = false;
-
-                    }
-
-                });
-
-                if (readyAll) {
-
-                    resolve();
-
-                } else {
-
-                    tc.events.once('ready', function() {
-
-                        resolve();
-
-                    });
-
-                }
-
-            });
-
-        }
+            var switcher = mapSwitcher.querySelector('.switcher');
 
     
 
-        function getTileContainer(layer) {
+            var mapSwitcherWidth = mapSwitcher.getBoundingClientRect().width;
 
-            for (var k in layer) {
+            var activeBtn = mapSwitcher.querySelector('button.active');
 
-                if (layer.hasOwnProperty(k)) {
+            var btnWidth = activeBtn.offsetWidth;
 
-                    if (
-
-                        layer[k] instanceof ymaps.layer.tileContainer.CanvasContainer ||
-
-                        layer[k] instanceof ymaps.layer.tileContainer.DomContainer
-
-                    ) {
-
-                        return layer[k];
-
-                    }
-
-                }
-
-            }
-
-            return null;
-
-        }
+            switcher.style.width = btnWidth + 'px';
 
     
 
-        // Функция загрузки API Яндекс.Карт по требованию (в нашем случае при наведении)
+            if (activeBtn.dataset.action === 'moscow') {
 
-        function loadScript(url, callback) {
-
-            var script = document.createElement('script');
-
-    
-
-            if (script.readyState) {
-
-                // IE
-
-                script.onreadystatechange = function() {
-
-                    if (script.readyState == 'loaded' || script.readyState == 'complete') {
-
-                        script.onreadystatechange = null;
-
-                        callback();
-
-                    }
-
-                };
+                switcher.style.left = '2px';
 
             } else {
 
-                // Другие браузеры
-
-                script.onload = function() {
-
-                    callback();
-
-                };
+                switcher.style.left = mapSwitcherWidth - btnWidth - 2 + 'px';
 
             }
 
     
 
-            script.src = url;
+            mapSwitcher.addEventListener('click', (e) => {
 
-            document.getElementsByTagName('head')[0].appendChild(script);
-
-        }
+                if (myMap === undefined) return;
 
     
 
-        // Основная функция, которая проверяет когда мы навели на блок с классом "ymap-container"
+                var mapSwitcherWidth = mapSwitcher.getBoundingClientRect().width;
 
-        var ymap = function() {
+                var target = e.target;
 
-            loadScript(
+                var action = target.dataset.action;
 
-                'https://api-maps.yandex.ru/2.1/?apikey=2efe2353-6e9b-4f4f-8804-395887835361&lang=ru_RU&load=Map&loadByRequire=1',
+    
 
-                function() {
+                var switcherBtns = Array.from(mapSwitcher.children);
 
-                    ymaps.load(init);
+    
+
+                if (target.classList.contains('active')) return;
+
+                switcherBtns.forEach((btn) => btn.classList.remove('active'));
+
+    
+
+                mapSwitcher.classList.add('disabled');
+
+                var targetWidth = target.offsetWidth;
+
+                target.classList.add('active');
+
+                switcher.style.width = targetWidth + 'px';
+
+    
+
+                var activeData = contactsData.find((data) => data.classList.contains('active'));
+
+                var relatedData = contactsData.find((data) => data.dataset.city === action);
+
+    
+
+                if (action === 'moscow') {
+
+                    switcher.style.left = '2px';
+
+    
+
+                    myMap.panTo(moscowAddress, {
+
+                        duration: 1000,
+
+                    });
+
+                } else {
+
+                    myMap.panTo(spbAddress, {
+
+                        duration: 1000,
+
+                    });
+
+                    switcher.style.left = mapSwitcherWidth - targetWidth - 2 + 'px';
 
                 }
 
-            );
+    
 
-        };
+                $(activeData).fadeOut(160, function () {
+
+                    activeData.classList.remove('active');
+
+                    relatedData.classList.add('active');
+
+                    $(relatedData).fadeIn(160, function () {
+
+                        mapSwitcher.classList.remove('disabled');
+
+                    });
+
+                });
+
+            });
 
     
 
-        $(function() {
+            return activeBtn.dataset.action;
 
-            ymap();
-
-        });
+        }
 
     });
 
     
 
     
-    (function() {
+    (function () {
 
-        $modal = $('#modal1');
+        $modal1 = $('#modal1');
 
-        $modal.on('show.bs.modal', function(event) {
-
-            var invoker = $(event.relatedTarget);
+        $modal2 = $('#modal2');
 
     
+
+        $modal1.on('show.bs.modal', function (e) {
+
+            modalLogic(e);
+
+        });
+
+        $modal2.on('show.bs.modal', function (e) {
+
+            modalLogic(e);
+
+        });
+
+    
+
+        function modalLogic(event) {
+
+            var xhr = new XMLHttpRequest();
+
+    
+
+            var currentModal = $(event.currentTarget);
+
+            var $relatedTarget = $(event.relatedTarget);
+
+            console.log(' $relatedTarget: ',  $relatedTarget);
+
+            var currentForm = currentModal.find('form');
+
+            var formName = currentForm.attr('name');
+
+    
+
+            var city = $relatedTarget.attr('data-city');
+
+            var $city_selector = currentModal.find('input:radio[name="city"]');
+
+            $city_selector.attr('checked', false);
+
+            if (city) {
+
+                $city_selector.filter('[value="' + city + '"]').attr('checked', true);
+
+            } else {
+
+                $city_selector.filter(':first').attr('checked', true);
+
+            }
+
+    
+
+            var firstInput = currentModal.find('input')[0];
+
+            if (firstInput) {
+
+                firstInput.focus();
+
+            }
+
+    
+
+            var phoneInput = currentModal.find('input[name="modal_tel"]');
 
             function inputPhoneValidate() {
 
                 debugger;
 
-                var enteredPhone = inputPhone.val();
+                var enteredPhone = phoneInput.val();
 
                 return Inputmask.isValid(enteredPhone, {
 
@@ -653,9 +835,7 @@ jQuery(document).ready(function($) {
 
             var phoneMask = '+7 (999) 999-99-99';
 
-            var inputPhone = $('#modal_tel');
-
-            inputPhone.inputmask({
+            phoneInput.inputmask({
 
                 mask: phoneMask,
 
@@ -665,59 +845,29 @@ jQuery(document).ready(function($) {
 
     
 
-            var xhr = new XMLHttpRequest();
+            var nameInput = currentModal.find('input[name="name"]');
+
+            var submit = currentModal.find('.modal-submit');
 
     
 
-            var currentModal = $(this);
-
-            var currentForm = $(this).find('form');
-
-            var formName = currentForm.attr('name');
-
-    
-
-            var firstInput = $(this).find('input')[0];
-
-            if (firstInput) {
-
-                firstInput.focus();
-
-            }
-
-    
-
-            var mobileInput = $(this).find('input[name="phone"]');
-
-            var submit = $(this).find('.modal-submit');
-
-    
-
-            var invokerText = invoker.data('button');
-
-            submit.text(invokerText || 'Отправить');
-
-    
-
-            currentForm.on('submit', function(e) {
+            currentForm.on('submit', function (e) {
 
                 e.preventDefault();
 
     
 
-                var phoneValid = inputPhoneValidate();
+                currentModal.modal('hide');
 
-                debugger;
-
-                if (!phoneValid) return;
-
-    
-
-                xhr.onreadystatechange = function() {
+                xhr.onreadystatechange = function () {
 
                     if (xhr.readyState === 4) {
 
-                        mobileInput.val('');
+                        phoneInput.val('');
+
+                        nameInput.val('');
+
+    
 
                         submit.removeClass('loading');
 
@@ -725,13 +875,17 @@ jQuery(document).ready(function($) {
 
                         if (xhr.status === 200) {
 
-                            $('#success').modal();
+                            var response = JSON.parse(xhr.response);
+
+                            window.location.href = window.location.hostname + '/spasibo-za-zajavku/';
 
                             currentForm.off();
 
                         } else {
 
                             currentForm.off();
+
+                            currentModal.modal('hide');
 
                             alert('Возникла ошибка при отправке формы. Код ошибки: ' + xhr.status + ' ' + xhr.statusText);
 
@@ -743,17 +897,15 @@ jQuery(document).ready(function($) {
 
     
 
-                currentModal.modal('hide');
-
                 var formData = new FormData(document.forms[formName]);
 
-                xhr.open('POST', 'sendform.php', true);
+                xhr.open('POST', '/wp-content/themes/sanatera/formSubmit.php', true);
 
                 xhr.send(formData);
 
             });
 
-        });
+        }
 
     })();
 
@@ -859,7 +1011,9 @@ jQuery(document).ready(function($) {
     })();
 
     
-    (function() {
+    (function () {
+
+        var inputPhone = $('.quiz__final-phone input');
 
         function inputPhoneValidate() {
 
@@ -877,8 +1031,6 @@ jQuery(document).ready(function($) {
 
         var phoneMask = '+7 (999) 999-99-99';
 
-        var inputPhone = $('.quiz__question-phone input');
-
         inputPhone.inputmask({
 
             mask: phoneMask,
@@ -886,6 +1038,8 @@ jQuery(document).ready(function($) {
             showMaskOnHover: false,
 
         });
+
+        // inputPhone.mask('+7 (999) 999-99-99');
 
     
 
@@ -913,6 +1067,10 @@ jQuery(document).ready(function($) {
 
     
 
+        var selectedBranch;
+
+    
+
         // answers.on('change', function() {
 
         //     $nextButton.attr('disabled', false);
@@ -921,7 +1079,7 @@ jQuery(document).ready(function($) {
 
     
 
-        quizSlider.on('init', function(e, slick) {
+        quizSlider.on('init', function (e, slick) {
 
             totalSlides = slick.$slides.length;
 
@@ -937,7 +1095,9 @@ jQuery(document).ready(function($) {
 
     
 
-            answers.on('change', function() {
+            answers.on('change', function () {
+
+                selectedBranch = $(this).data('question');
 
                 $nextButton.attr('disabled', false);
 
@@ -947,57 +1107,129 @@ jQuery(document).ready(function($) {
 
     
 
-        quizSlider.on('beforeChange', function(e, slick, currentSlide, nextSlide) {
-
-            updateStatus(nextSlide, totalSlides);
-
-            if (nextSlide === 0) {
-
-                $prevButton.attr('disabled', true);
-
-            } else {
-
-                $prevButton.attr('disabled', false);
-
-            }
+        var cb;
 
     
 
-            var answers = $(slick.$slides[nextSlide]).find('.quiz__question-answer input');
+        quizSlider
 
-            var checkedAnswer = answers.filter(':checked');
+            .on('beforeChange', function (e, slick, currentSlide, nextSlide) {
 
-    
-
-            if (checkedAnswer.length > 0) {
-
-                $nextButton.attr('disabled', false);
-
-            } else {
-
-                $nextButton.attr('disabled', true);
-
-            }
+                updateStatus(nextSlide, totalSlides);
 
     
 
-            answers.on('change', function() {
+                if (nextSlide === slick.$slides.length - 1) {
 
-                $nextButton.attr('disabled', false);
+                    setTimeout(function () {
+
+                        inputPhone.focus();
+
+                    }, 500);
+
+                }
+
+    
+
+                var slideDirection;
+
+                if (Math.abs(nextSlide - currentSlide) === 1) {
+
+                    slideDirection = nextSlide - currentSlide > 0 ? 'right' : 'left';
+
+                } else {
+
+                    slideDirection = nextSlide - currentSlide > 0 ? 'left' : 'right';
+
+                }
+
+    
+
+                var nextStep = slick.$slides[nextSlide];
+
+    
+
+                if (nextSlide === 0) {
+
+                    $prevButton.attr('disabled', true);
+
+                } else {
+
+                    cb = toggleQuestions($(nextStep), slideDirection);
+
+                    $prevButton.attr('disabled', false);
+
+                }
+
+    
+
+                var answers = $(slick.$slides[nextSlide]).find('.quiz__question-answer input');
+
+                var checkedAnswer = answers.filter(':checked');
+
+    
+
+                if (checkedAnswer.length > 0) {
+
+                    $nextButton.attr('disabled', false);
+
+                } else {
+
+                    $nextButton.attr('disabled', true);
+
+                }
+
+    
+
+                answers.on('change', function () {
+
+                    $nextButton.attr('disabled', false);
+
+                });
+
+    
+
+                if (nextSlide === totalSlides - 1) {
+
+                    $('.quiz__controls').hide();
+
+                    $('.quiz__progress').hide();
+
+                }
+
+            })
+
+            .on('afterChange', function () {
+
+                $([document.documentElement, document.body]).animate(
+
+                    {
+
+                        scrollTop: quizSlider.offset().top - 120,
+
+                    },
+
+                    200
+
+                );
+
+    
+
+                if (typeof cb === 'function') {
+
+                    setTimeout(function () {
+
+                        cb();
+
+                        console.log('cb');
+
+                        cb = null;
+
+                    }, 0);
+
+                }
 
             });
-
-    
-
-            if (nextSlide === totalSlides - 1) {
-
-                $('.quiz__controls').hide();
-
-                $('.quiz__progress').hide();
-
-            }
-
-        });
 
     
 
@@ -1019,7 +1251,7 @@ jQuery(document).ready(function($) {
 
     
 
-        $nextButton.on('click', function() {
+        $nextButton.on('click', function () {
 
             quizSlider.slick('slickNext');
 
@@ -1027,7 +1259,7 @@ jQuery(document).ready(function($) {
 
     
 
-        $prevButton.on('click', function() {
+        $prevButton.on('click', function () {
 
             quizSlider.slick('slickPrev');
 
@@ -1035,39 +1267,73 @@ jQuery(document).ready(function($) {
 
     
 
-        quizSlider.on('submit', function(e) {
+        quizSlider.on('submit', function (e) {
 
             e.preventDefault();
 
     
 
-            var phoneValid = inputPhoneValidate();
+            var formData = {
 
-            if (!phoneValid) return;
+                comment: '',
+
+                tel: inputPhone.val()   
+
+            };
 
     
 
-            const data = $(this).serialize();
+            var allQuestions = quizSlider.find('.quiz__question');
+
+            allQuestions.each(function (_, question) {
+
+                var title = $(question).find('.quiz__question-title').text().trim();
+
+                var checkedAnwers = $(question).find('input:checked');
+
+                if (checkedAnwers.length === 0) return;
+
+                var checkedAnswersString = '';
+
+                checkedAnwers.each(function (_, answer) {
+
+                    checkedAnswersString += $(answer).val() + '; ';
+
+                });
+
+                formData.comment += '\n' + title + ': ' + checkedAnswersString;
+
+            });
+
+    
+
+            console.log(formData.comment);
+
+    
+
+            afterSubmit('Спасибо, мы уже изучаем ваши ответы и свяжемся в течение 5 минут');
+
+    
+
+    
 
             $.ajax({
 
                 type: 'POST',
 
-                url: '/sendmail.php',
+                url: '/formSubmit.php',
 
-                data: data,
+                data: formData,
 
-                success: function(data) {
+                success: function (data) {
 
-                    afterSubmit();
+                    afterSubmit('Спасибо, мы уже изучаем ваши ответы и свяжемся в течение 5 минут');
 
                 },
 
-                error: function(data) {
+                error: function (data) {
 
-                    afterSubmit();
-
-                    alert('Форме пока некуда уйти');
+                    afterSubmit('Произошла ошибка при отправке формы');
 
                 },
 
@@ -1077,21 +1343,21 @@ jQuery(document).ready(function($) {
 
     
 
-        function afterSubmit() {
+        function afterSubmit(title) {
 
-            $('.quiz__question-text').hide();
+            $('.quiz__final-text').hide();
 
-            $('.quiz__question-phone').hide();
+            $('.quiz__final-phone').hide();
 
             $('.quiz__submit').hide();
 
     
 
-            $('.quiz__question-title').text('Спасибо, мы уже изучаем ваши ответы и свяжемся в течение 5 минут');
+            $('.quiz__final-title').text(title);
 
     
 
-            quizSlider.slick('setPosition')
+            quizSlider.slick('setPosition');
 
         }
 
@@ -1108,6 +1374,70 @@ jQuery(document).ready(function($) {
             var currentProgress = currentSlide / totalSlides;
 
             $progressBar.css('transform', 'scaleX(' + currentProgress + ')');
+
+        }
+
+    
+
+        function toggleQuestions(step, slideDirection) {
+
+            var questions = step.find('.quiz__question');
+
+            var targetQuestion;
+
+    
+
+            if (questions.length > 1) {
+
+                questions.each(function (_, q) {
+
+                    $(q).hide();
+
+                    var answers = step.find('.quiz__question-answer input');
+
+                    answers.attr('disabled', true);
+
+                });
+
+    
+
+                targetQuestion = questions.filter("[data-type='" + selectedBranch + "']");
+
+            } else {
+
+                targetQuestion = $(questions[0]);
+
+            }
+
+    
+
+            var targetedAnswers = targetQuestion.find('.quiz__question-answer input');
+
+            if (targetedAnswers.length === 0 && slideDirection === 'right') {
+
+                return function () {
+
+                    quizSlider.slick('slickNext');
+
+                };
+
+            } else if (targetedAnswers.length === 0 && slideDirection === 'left') {
+
+                return function () {
+
+                    quizSlider.slick('slickPrev');
+
+                };
+
+            } else {
+
+                console.log(targetedAnswers);
+
+                targetedAnswers.attr('disabled', false);
+
+                targetQuestion.show();
+
+            }
 
         }
 
@@ -1469,11 +1799,33 @@ jQuery(document).ready(function($) {
     
 
     
+    (function () {
+
+        
+
+    })();
+
     
 
     
     
 
     
+    (function() {
+
+        var topScreenStelki = $('.top-screen-stelki');
+
+        if (topScreenStelki.length === 0) return;
+
     
+
+        if (window.matchMedia('(max-width: 480px)').matches) {
+
+            var video = topScreenStelki.find('video source');
+
+            video.attr('src','video/stelki_m.mp4');
+
+        }
+
+    })()
 });

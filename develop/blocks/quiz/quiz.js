@@ -1,4 +1,5 @@
-(function() {
+(function () {
+    var inputPhone = $('.quiz__final-phone input');
     function inputPhoneValidate() {
         var enteredPhone = inputPhone.val();
         return Inputmask.isValid(enteredPhone, {
@@ -7,11 +8,11 @@
     }
 
     var phoneMask = '+7 (999) 999-99-99';
-    var inputPhone = $('.quiz__question-phone input');
     inputPhone.inputmask({
         mask: phoneMask,
         showMaskOnHover: false,
     });
+    // inputPhone.mask('+7 (999) 999-99-99');
 
     var quizSlider = $('.quiz__slider');
 
@@ -25,11 +26,13 @@
 
     var totalSlides;
 
+    var selectedBranch;
+
     // answers.on('change', function() {
     //     $nextButton.attr('disabled', false);
     // });
 
-    quizSlider.on('init', function(e, slick) {
+    quizSlider.on('init', function (e, slick) {
         totalSlides = slick.$slides.length;
         $totalSlides.text(totalSlides);
 
@@ -37,37 +40,74 @@
 
         var answers = $(slick.$slides[slick.currentSlide]).find('.quiz__question-answer input');
 
-        answers.on('change', function() {
+        answers.on('change', function () {
+            selectedBranch = $(this).data('question');
             $nextButton.attr('disabled', false);
         });
     });
 
-    quizSlider.on('beforeChange', function(e, slick, currentSlide, nextSlide) {
-        updateStatus(nextSlide, totalSlides);
-        if (nextSlide === 0) {
-            $prevButton.attr('disabled', true);
-        } else {
-            $prevButton.attr('disabled', false);
-        }
+    var cb;
 
-        var answers = $(slick.$slides[nextSlide]).find('.quiz__question-answer input');
-        var checkedAnswer = answers.filter(':checked');
+    quizSlider
+        .on('beforeChange', function (e, slick, currentSlide, nextSlide) {
+            updateStatus(nextSlide, totalSlides);
 
-        if (checkedAnswer.length > 0) {
-            $nextButton.attr('disabled', false);
-        } else {
-            $nextButton.attr('disabled', true);
-        }
+            if (nextSlide === slick.$slides.length - 1) {
+                setTimeout(function () {
+                    inputPhone.focus();
+                }, 500);
+            }
 
-        answers.on('change', function() {
-            $nextButton.attr('disabled', false);
+            var slideDirection;
+            if (Math.abs(nextSlide - currentSlide) === 1) {
+                slideDirection = nextSlide - currentSlide > 0 ? 'right' : 'left';
+            } else {
+                slideDirection = nextSlide - currentSlide > 0 ? 'left' : 'right';
+            }
+
+            var nextStep = slick.$slides[nextSlide];
+
+            if (nextSlide === 0) {
+                $prevButton.attr('disabled', true);
+            } else {
+                cb = toggleQuestions($(nextStep), slideDirection);
+                $prevButton.attr('disabled', false);
+            }
+
+            var answers = $(slick.$slides[nextSlide]).find('.quiz__question-answer input');
+            var checkedAnswer = answers.filter(':checked');
+
+            if (checkedAnswer.length > 0) {
+                $nextButton.attr('disabled', false);
+            } else {
+                $nextButton.attr('disabled', true);
+            }
+
+            answers.on('change', function () {
+                $nextButton.attr('disabled', false);
+            });
+
+            if (nextSlide === totalSlides - 1) {
+                $('.quiz__controls').hide();
+                $('.quiz__progress').hide();
+            }
+        })
+        .on('afterChange', function () {
+            $([document.documentElement, document.body]).animate(
+                {
+                    scrollTop: quizSlider.offset().top - 120,
+                },
+                200
+            );
+
+            if (typeof cb === 'function') {
+                setTimeout(function () {
+                    cb();
+                    console.log('cb');
+                    cb = null;
+                }, 0);
+            }
         });
-
-        if (nextSlide === totalSlides - 1) {
-            $('.quiz__controls').hide();
-            $('.quiz__progress').hide();
-        }
-    });
 
     quizSlider.slick({
         slidesToShow: 1,
@@ -78,43 +118,60 @@
         infinite: false,
     });
 
-    $nextButton.on('click', function() {
+    $nextButton.on('click', function () {
         quizSlider.slick('slickNext');
     });
 
-    $prevButton.on('click', function() {
+    $prevButton.on('click', function () {
         quizSlider.slick('slickPrev');
     });
 
-    quizSlider.on('submit', function(e) {
+    quizSlider.on('submit', function (e) {
         e.preventDefault();
 
-        var phoneValid = inputPhoneValidate();
-        if (!phoneValid) return;
+        var formData = {
+            comment: '',
+            tel: inputPhone.val()   
+        };
 
-        const data = $(this).serialize();
+        var allQuestions = quizSlider.find('.quiz__question');
+        allQuestions.each(function (_, question) {
+            var title = $(question).find('.quiz__question-title').text().trim();
+            var checkedAnwers = $(question).find('input:checked');
+            if (checkedAnwers.length === 0) return;
+            var checkedAnswersString = '';
+            checkedAnwers.each(function (_, answer) {
+                checkedAnswersString += $(answer).val() + '; ';
+            });
+            formData.comment += '\n' + title + ': ' + checkedAnswersString;
+        });
+
+        console.log(formData.comment);
+
+        afterSubmit('Спасибо, мы уже изучаем ваши ответы и свяжемся в течение 5 минут');
+
+
         $.ajax({
             type: 'POST',
-            url: '/sendmail.php',
-            data: data,
-            success: function(data) {
-                afterSubmit();
+            url: '/formSubmit.php',
+            data: formData,
+            success: function (data) {
+                afterSubmit('Спасибо, мы уже изучаем ваши ответы и свяжемся в течение 5 минут');
             },
-            error: function(data) {
-                afterSubmit();
-                alert('Форме пока некуда уйти');
+            error: function (data) {
+                afterSubmit('Произошла ошибка при отправке формы');
             },
         });
     });
 
-    function afterSubmit() {
-        $('.quiz__question-text').hide();
-        $('.quiz__question-phone').hide();
+    function afterSubmit(title) {
+        $('.quiz__final-text').hide();
+        $('.quiz__final-phone').hide();
         $('.quiz__submit').hide();
 
-        $('.quiz__question-title').text('Спасибо, мы уже изучаем ваши ответы и свяжемся в течение 5 минут');
+        $('.quiz__final-title').text(title);
 
-        quizSlider.slick('setPosition')
+        quizSlider.slick('setPosition');
     }
 
     function updateStatus(slideIndex, totalSlides) {
@@ -123,5 +180,37 @@
 
         var currentProgress = currentSlide / totalSlides;
         $progressBar.css('transform', 'scaleX(' + currentProgress + ')');
+    }
+
+    function toggleQuestions(step, slideDirection) {
+        var questions = step.find('.quiz__question');
+        var targetQuestion;
+
+        if (questions.length > 1) {
+            questions.each(function (_, q) {
+                $(q).hide();
+                var answers = step.find('.quiz__question-answer input');
+                answers.attr('disabled', true);
+            });
+
+            targetQuestion = questions.filter("[data-type='" + selectedBranch + "']");
+        } else {
+            targetQuestion = $(questions[0]);
+        }
+
+        var targetedAnswers = targetQuestion.find('.quiz__question-answer input');
+        if (targetedAnswers.length === 0 && slideDirection === 'right') {
+            return function () {
+                quizSlider.slick('slickNext');
+            };
+        } else if (targetedAnswers.length === 0 && slideDirection === 'left') {
+            return function () {
+                quizSlider.slick('slickPrev');
+            };
+        } else {
+            console.log(targetedAnswers);
+            targetedAnswers.attr('disabled', false);
+            targetQuestion.show();
+        }
     }
 })();

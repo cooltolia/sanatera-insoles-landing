@@ -1,176 +1,182 @@
-$(window).on('load', function() {
+function loadYandexMap(url) {
+    return new Promise(function (resolve) {
+        if (typeof ymaps !== 'undefined') {
+            resolve();
+        } else {
+            const yandexMapUrl = url;
+            // const yandexMapUrl =
+            //     'https://api-maps.yandex.ru/2.1/?apikey=6cabbeea-5917-4375-b061-36a551dae260&lang=ru_RU';
+            const yandexMapScript = document.createElement('script');
+            yandexMapScript.type = 'text/javascript';
+            yandexMapScript.src = yandexMapUrl;
+            document.body.appendChild(yandexMapScript);
+
+            yandexMapScript.onload = function () {
+                resolve();
+            };
+        }
+    });
+}
+
+$(window).on('load', function () {
     var mapContainer = $('#map');
     if (mapContainer.length === 0) return;
 
+    var myMap;
+
+    var activeCity = mapSwitching();
+
+    loadYandexMap('https://api-maps.yandex.ru/2.1/?apikey=2efe2353-6e9b-4f4f-8804-395887835361&lang=ru_RU').then(
+        function () {
+            init();
+        }
+    );
+
+    var placemarkOptions = {
+        iconLayout: 'default#image',
+        iconImageHref: '/images/icons/map-icon.png',
+        iconImageSize: [30, 30],
+        iconImageOffset: [-15, -30],
+    };
+
+    var multiRouteOptions = {
+        // Автоматически устанавливать границы карты так, чтобы маршрут был виден целиком.
+        //boundsAutoApply: true
+        wayPointIconLayout: 'none',
+        routeActivePedestrianSegmentStrokeStyle: 'solid',
+        routeActivePedestrianSegmentStrokeColor: '#ff0000',
+    };
+
     var zoom = 17;
-    var adress;
-    var center;
-    adress = [59.931524, 30.351719];
-    center = adress;
+    var spbAddress = [59.931524, 30.351719];
+    var moscowAddress = [55.78081961083188, 37.60234272023768];
+
     if ($(window).width() < 480) {
         zoom = 16;
-        center = [59.931641, 30.353813];
+        spbAddress = [59.931641, 30.353813];
+        moscowAddress = [55.78059739429505, 37.60061269542307];
     }
-
-    var $mapFallback = $('.map__fallback');
-
-    /** popup */
-
-    var $header = $('.map__info-header'),
-        $body = $('.map__info-body');
-
-    if ($(window).width() <= '767') {
-        $header.on('click', function() {
-            if ($header.hasClass('js-expanded')) {
-                $body.slideUp();
-                $header.removeClass('js-expanded');
-            } else {
-                $header.addClass('js-expanded');
-                $body.slideDown();
-            }
-        });
-    }
-
-    //Переменная для определения была ли хоть раз загружена Яндекс.Карта (чтобы избежать повторной загрузки)
-    var check_if_load = false;
-    var TRY = 1;
 
     function init() {
-        if (ymaps.geocode === undefined) {
-            // console.log('Попытка номер ' + TRY);
-            TRY++;
-            return ymap();
-        }
-
-        ymaps.ready(function() {
-            var myMap;
-            var pointA = 'Санкт-Петербург, метро Маяковская',
-                pointB = adress,
-                multiRoute = new ymaps.multiRouter.MultiRoute(
-                    {
-                        referencePoints: [pointA, pointB],
-                        params: {
-                            //Тип маршрутизации - пешеходная маршрутизация.
-                            routingMode: 'pedestrian',
-                        },
-                    },
-                    {
-                        // Автоматически устанавливать границы карты так, чтобы маршрут был виден целиком.
-                        //boundsAutoApply: true
-                        wayPointIconLayout: 'none',
-                        routeActivePedestrianSegmentStrokeStyle: 'solid',
-                        routeActivePedestrianSegmentStrokeColor: '#ff0000',
-                    }
-                );
-            // ymaps.geocode(adress).then(function (res) {
-            //     console.log(res.geoObjects.get(0).geometry.getCoordinates());
+        ymaps.ready(function () {
+            var center = activeCity === 'moscow' ? moscowAddress : spbAddress;
 
             myMap = new ymaps.Map('map', {
                 center: center,
                 zoom: zoom,
+                controls: ['zoomControl'],
             });
-            var myPlacemark = new ymaps.Placemark(
-                adress,
+            var spbPlacemark = new ymaps.Placemark(
+                spbAddress,
                 {
                     hintContent: 'г. Санкт-Петербург, ст. м. Маяковская, Невский проспект 61 (вход со двора)',
                     balloonContent: 'г. Санкт-Петербург, ст. м. Маяковская, Невский проспект 61 (вход со двора)',
                 },
-                {
-                    // Опции.
-                    // Необходимо указать данный тип макета.
-                    iconLayout: 'default#image',
-                    // Своё изображение иконки метки.
-                    iconImageHref: 'images/icons/map-icon.png',
-                    // Размеры метки.
-                    iconImageSize: [30, 30],
-                    // Смещение левого верхнего угла иконки относительно
-                    // её "ножки" (точки привязки).
-                    iconImageOffset: [-15, -30],
-                }
+                placemarkOptions
             );
 
-            var layer = myMap.layers.get(0).get(0);
-            // Отслеживаем событие окончания отрисовки тайлов.
-            waitForTilesLoad(layer).then(function() {
-                console.log('Карта загружена');
-            });
+            var moscowPlacemark = new ymaps.Placemark(
+                moscowAddress,
+                {
+                    hintContent:
+                        'г. Москва, ст. м. Новослободская, БЦ "Сущевский", ул.Сущёвская, д. 12, стр. 1, 3 подъезд, 2 эт., пом. 5',
+                    balloonContent:
+                        'г. Москва, ст. м. Новослободская, БЦ "Сущевский", ул.Сущёвская, д. 12, стр. 1, 3 подъезд, 2 эт., пом. 5',
+                },
+                placemarkOptions
+            );
 
-            myMap.geoObjects.add(myPlacemark);
-            myMap.geoObjects.add(multiRoute);
+            var spbMultiRoute = new ymaps.multiRouter.MultiRoute(
+                {
+                    referencePoints: ['Санкт-Петербург, метро Маяковская', spbAddress],
+                    params: {
+                        //Тип маршрутизации - пешеходная маршрутизация.
+                        routingMode: 'pedestrian',
+                    },
+                },
+                multiRouteOptions
+            );
+
+            var moscowMultiRoute = new ymaps.multiRouter.MultiRoute(
+                {
+                    referencePoints: ['Москва, метро Новослободская', moscowAddress],
+                    params: {
+                        //Тип маршрутизации - пешеходная маршрутизация.
+                        routingMode: 'pedestrian',
+                    },
+                },
+                multiRouteOptions
+            );
+
+            myMap.geoObjects.add(spbPlacemark);
+            myMap.geoObjects.add(moscowPlacemark);
+            myMap.geoObjects.add(spbMultiRoute);
+            myMap.geoObjects.add(moscowMultiRoute);
             myMap.behaviors.disable('scrollZoom');
         });
 
         // });
     }
 
-    // Функция для определения полной загрузки карты (на самом деле проверяется загрузка тайлов)
-    function waitForTilesLoad(layer) {
-        return new ymaps.vow.Promise(function(resolve, reject) {
-            var tc = getTileContainer(layer),
-                readyAll = true;
-            tc.tiles.each(function(tile, number) {
-                if (!tile.isReady()) {
-                    readyAll = false;
-                }
-            });
-            if (readyAll) {
-                resolve();
-            } else {
-                tc.events.once('ready', function() {
-                    resolve();
-                });
-            }
-        });
-    }
+    function mapSwitching() {
+        var mapSwitcher = document.querySelector('.map__contacts-switchers');
+        if (!mapSwitcher) return;
+        var contactsData = Array.from(document.querySelectorAll('.map__contacts-data'));
+        var switcher = mapSwitcher.querySelector('.switcher');
 
-    function getTileContainer(layer) {
-        for (var k in layer) {
-            if (layer.hasOwnProperty(k)) {
-                if (
-                    layer[k] instanceof ymaps.layer.tileContainer.CanvasContainer ||
-                    layer[k] instanceof ymaps.layer.tileContainer.DomContainer
-                ) {
-                    return layer[k];
-                }
-            }
-        }
-        return null;
-    }
+        var mapSwitcherWidth = mapSwitcher.getBoundingClientRect().width;
+        var activeBtn = mapSwitcher.querySelector('button.active');
+        var btnWidth = activeBtn.offsetWidth;
+        switcher.style.width = btnWidth + 'px';
 
-    // Функция загрузки API Яндекс.Карт по требованию (в нашем случае при наведении)
-    function loadScript(url, callback) {
-        var script = document.createElement('script');
-
-        if (script.readyState) {
-            // IE
-            script.onreadystatechange = function() {
-                if (script.readyState == 'loaded' || script.readyState == 'complete') {
-                    script.onreadystatechange = null;
-                    callback();
-                }
-            };
+        if (activeBtn.dataset.action === 'moscow') {
+            switcher.style.left = '2px';
         } else {
-            // Другие браузеры
-            script.onload = function() {
-                callback();
-            };
+            switcher.style.left = mapSwitcherWidth - btnWidth - 2 + 'px';
         }
 
-        script.src = url;
-        document.getElementsByTagName('head')[0].appendChild(script);
-    }
+        mapSwitcher.addEventListener('click', (e) => {
+            if (myMap === undefined) return;
 
-    // Основная функция, которая проверяет когда мы навели на блок с классом "ymap-container"
-    var ymap = function() {
-        loadScript(
-            'https://api-maps.yandex.ru/2.1/?apikey=2efe2353-6e9b-4f4f-8804-395887835361&lang=ru_RU&load=Map&loadByRequire=1',
-            function() {
-                ymaps.load(init);
+            var mapSwitcherWidth = mapSwitcher.getBoundingClientRect().width;
+            var target = e.target;
+            var action = target.dataset.action;
+
+            var switcherBtns = Array.from(mapSwitcher.children);
+
+            if (target.classList.contains('active')) return;
+            switcherBtns.forEach((btn) => btn.classList.remove('active'));
+
+            mapSwitcher.classList.add('disabled');
+            var targetWidth = target.offsetWidth;
+            target.classList.add('active');
+            switcher.style.width = targetWidth + 'px';
+
+            var activeData = contactsData.find((data) => data.classList.contains('active'));
+            var relatedData = contactsData.find((data) => data.dataset.city === action);
+
+            if (action === 'moscow') {
+                switcher.style.left = '2px';
+
+                myMap.panTo(moscowAddress, {
+                    duration: 1000,
+                });
+            } else {
+                myMap.panTo(spbAddress, {
+                    duration: 1000,
+                });
+                switcher.style.left = mapSwitcherWidth - targetWidth - 2 + 'px';
             }
-        );
-    };
 
-    $(function() {
-        ymap();
-    });
+            $(activeData).fadeOut(160, function () {
+                activeData.classList.remove('active');
+                relatedData.classList.add('active');
+                $(relatedData).fadeIn(160, function () {
+                    mapSwitcher.classList.remove('disabled');
+                });
+            });
+        });
+
+        return activeBtn.dataset.action;
+    }
 });

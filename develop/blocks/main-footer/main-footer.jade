@@ -6,11 +6,14 @@ mixin main-footer()
                     IMG(src="images/logo_light.svg")
                 +e.contacts
                     +e.contacts-title Есть вопросы? Звони!
-                    +e.A.tel(href='tel:8 (812) 400 00 05') 8 (812) 400 00 05 
+                    +e.phones
+                        +b.footer-phone
+                            +e.city Санкт-Петербург
+                            +e.A.number(href="tel:+78124000005" class="footer-phone__number" data-target='#modal1' data-city='spb') 8 (812) 400-00-05
+                        +b.footer-phone
+                            +e.city Москва
+                            +e.A.number(href="tel:+74952152525" class="footer-phone__number" data-target='#modal1' data-city='msk') 8 (495) 215-25-25
                 +e.socials
                     +socials('Следите за нами')
                 +e.legal
-                    | 2019 © "Санатера"<br>
-                    | ООО "НК Росинновации"<br>
-                    | ИНН: 7810840233<br>
-                    | ОГРН: 1117847388713
+                    | Имеются противопоказания. <br>Необходимо проконсультироваться со специалистом. <br> «Sanatera» 2020 ©

@@ -13,6 +13,15 @@
     height: 520px;
 
     overflow: hidden;
+
+    .inner {
+        position: absolute;
+        pointer-events: none;
+        z-index: 1;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 100%;
+    }
 }
 
 .map__fallback {
@@ -60,7 +69,7 @@
     left: 0;
 
     svg {
-        display: block; 
+        display: block;
         width: 100%;
         height: 100%;
 
@@ -78,6 +87,175 @@
 }
 
 .map__info-value {
+    margin: 0;
+
+    color: $darktext;
+    font-size: 10px;
+    font-weight: 300;
+    line-height: 1.2;
+
+    &--link {
+        text-decoration: none;
+
+        transition: color 300ms ease;
+
+        &:hover,
+        &:active,
+        &:focus {
+            color: $themecolor;
+            text-decoration: none;
+        }
+    }
+}
+
+.map__contacts {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-width: 360px;
+    height: 100%;
+    display: flex;
+    left: 50%;
+    transform: translateX(-50%);
+    flex-flow: column nowrap;
+    padding: 20px 10px;
+
+    pointer-events: none;
+}
+
+.map__contacts-switchers {
+    position: relative;
+    z-index: 0;
+    display: flex;
+    width: 100%;
+    padding: 2px;
+
+    background: #ffffff;
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+
+    button {
+        @include btn-reset;
+        width: auto;
+        padding: 10px 20px;
+        flex: 1 1 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        pointer-events: all;
+
+        font-size: 12px;
+        font-weight: 500;
+        color: $darktext;
+
+        transition: color 160ms ease;
+
+        .icon {
+            flex: 0 0 auto;
+            width: 16px;
+            height: 14px;
+            margin-right: 5px;
+
+            pointer-events: none;
+
+            svg,
+            path {
+                fill: $themecolor;
+
+                transition: fill 100ms ease;
+            }
+            
+            svg {
+                width: 100%;
+            }
+        }
+
+        &.active {
+            color: #fff;
+
+            .icon {
+                svg,
+                path {
+                    fill: white;
+                }
+            }
+        }
+    }
+
+    .switcher {
+        position: absolute;
+        z-index: -1;
+        background-color: $themecolor;
+        top: 2px;
+        bottom: 2px;
+
+        border-radius: 9px;
+
+        transition: left 300ms ease;
+        will-change: left;
+    }
+}
+
+.map__contacts-wrapper {
+    margin-top: auto;
+
+    pointer-events: all;
+}
+
+.map__contacts-data {
+    display: none;
+    z-index: 1;
+    width: 100%;
+    padding: 16px 12px;
+
+    background: #ffffff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 13px;
+
+    &.active {
+        display: block;
+    }
+}
+
+.map__contacts-row {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 16px;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.map__contacts-icon {
+    position: absolute;
+    width: 13px;
+    height: 13px;
+    top: 2px;
+    left: 0;
+
+    svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+
+        fill: $themecolor;
+    }
+}
+
+.map__contacts-title {
+    margin: 0 0 5px;
+
+    color: $darktext;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.map__contacts-value {
     margin: 0;
 
     color: $darktext;
@@ -210,7 +388,9 @@
 }
 
 .map__a-checkbox:checked + .map__agreement::before {
-    background-color: $themecolor;
+    // background-color: $themecolor;
+    background-image: url(../images/galka.svg);
+    background-size: contain;
 }
 
 @media #{$tablet} {
@@ -226,7 +406,7 @@
         top: 20px;
         bottom: auto;
         left: auto;
-        right: 20px; 
+        right: 20px;
         transform: none;
     }
 
@@ -242,6 +422,17 @@
         border-radius: 5px;
         background-color: #fff;
         box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    .map__contacts {
+        width: 300px;
+        left: auto;
+        right: 0;
+        transform: none;
+    }
+
+    .map__contacts-wrapper {
+        margin-top: 8px;
     }
 }
 
@@ -311,5 +502,47 @@
     .map__a-checkbox {
         left: 25px;
         bottom: 25px;
+    }
+
+    .map__contacts {
+        width: 350px;
+        right: 120px;
+    }
+
+    .map__contacts-switchers {
+        button {
+            padding: 12px 20px;
+
+            font-size: 16px;
+
+            .icon {
+                width: 21px;
+                height: 18px;
+            }
+        }
+    }
+
+    .map__contacts-wrapper {
+        margin-top: 12px;
+    }
+
+    .map__contacts-row {
+        margin-bottom: 24px;
+        padding-left: 28px;
+    }
+
+    .map__contacts-icon {
+        width: 16px;
+        height: 16px;
+    }
+
+    .map__contacts-title {
+        margin-bottom: 7px;
+
+        font-size: 16px;
+    }
+
+    .map__contacts-value {
+        font-size: 14px;
     }
 }

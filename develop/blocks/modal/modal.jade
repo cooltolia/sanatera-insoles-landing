@@ -20,7 +20,14 @@ mixin modal()
                             input.modal-input(type='text' id='modal_name' name='modal_name' placeholder='Ваше имя')
                         .modal-input-row
                             input.modal-input(type='text' id='modal_tel' name='modal_tel' required placeholder='Ваш номер телефона')
-                        button.modal-submit
-                        +e.modal-agreement
-                            input(type='checkbox' name='modal_agreement' id='modal_agreement' checked='' required='')
-                            label(for='modal_agreement') Подтверждаю, что я ознакомлен с политикой конфиденциальности и даю свое согласие на сбор и обработку персональных данных
+                        .modal-form__cities
+                            label.modal-form__city Санкт-Петербург
+                                input(type="radio" name="city" value="spb" checked="checked")
+                                span.modal-form__city-mark
+                            label.modal-form__city Москва
+                                input(type="radio" name="city" value="msk")
+                                span.modal-form__city-mark
+                        button.modal-submit Отправить
+                        .modal-form__check
+                            input(type='checkbox' name='modal-checkbox' id='modal-checkbox' checked='' required='' class='modal-form__modal-checkbox')
+                            label(for='modal-checkbox' class='modal-form__agreement') Подтверждаю, что я ознакомлен с политикой конфиденциальности и даю свое согласие на сбор и обработку персональных данных

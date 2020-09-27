@@ -5,39 +5,150 @@ mixin quiz()
                 +title
                     | Как правильно подобрать стельки
         +e.FORM.slider(action='#' method='post')
-            +e.question
-                +e.question-title Для чего нужны стельки?
-                +e.question-answers
-                    +e.question-answer
-                        input(id='question1_1' type='radio' name='question1' value='answer1')
-                        label(for='question1_1') Для обычной ходьбы
-                    +e.question-answer
-                        input(id='question1_2' type='radio' name='question1' value='answer2')
-                        label(for='question1_2') Для лечения
-                    +e.question-answer
-                        input(id='question1_3' type='radio' name='question1' value='answer3')
-                        label(for='question1_3') Для бега
-            +e.question
-                +e.question-title Уточните, пожалуйста, информацию:
-                +e.question-answers
-                    +e.question-answer
-                        input(id='question2_1' type='radio' name='question2' value='answer1')
-                        label(for='question2_1') Плоскостопие
-                    +e.question-answer
-                        input(id='question2_2' type='radio' name='question2' value='answer2')
-                        label(for='question2_2') Вальгусная и варусная стопа
-                    +e.question-answer
-                        input(id='question2_3' type='radio' name='question2' value='answer3')
-                        label(for='question2_3') Сколиоз
-                    +e.question-answer
-                        input(id='question2_4' type='radio' name='question2' value='answer4')
-                        label(for='question2_4') Боли в ногах, ступнях
-            +e.question
-                +e.question-title Спасибо, что ответили на все вопросы - это поможет сэкономить время
-                +e.P.question-text Впишите ваш телефон и мы свяжемся с вами как можно скорее
-                +e.question-phone
-                    input(type='text' name='question_phone' required="required" placeholder="Ваш номер телефона")
-                +e.BUTTON.submit(type='submit') Узнать результаты
+            +e.step
+                +e.question(style='display: block;')
+                    +e.question-title Для чего нужны стельки?
+                    +e.question-answers
+                        +e.question-answer
+                            input(id='question1_1' type='radio' name='question1' value='Для обычной ходьбы' data-question='1')
+                            label(for='question1_1') Для обычной ходьбы
+                        +e.question-answer
+                            input(id='question1_2' type='radio' name='question1' value='Для бега' data-question='2')
+                            label(for='question1_2') Для бега
+                        +e.question-answer
+                            input(id='question1_3' type='radio' name='question1' value='Для лечения' data-question='3')
+                            label(for='question1_3') Для лечения
+            +e.step
+                +e.question(data-type='1')
+                    +e.question-title Сколько в день проходите километров?
+                    +e.question-answers
+                        +e.question-answer
+                            input(disabled='' id='question2_1_1' type='radio' name='question2' value='До 1 км')
+                            label(for='question2_1_1') До 1 км
+                        +e.question-answer
+                            input(disabled='' id='question2_2_1' type='radio' name='question2' value='1-5 км')
+                            label(for='question2_2_1') 1-5 км
+                        +e.question-answer
+                            input(disabled='' id='question2_3_1' type='radio' name='question2' value='5-10 км')
+                            label(for='question2_3_1') 5-10 км
+                        +e.question-answer
+                            input(disabled='' id='question2_4_1' type='radio' name='question2' value='Свыше 10 км')
+                            label(for='question2_4_1') Свыше 10 км
+                        +e.question-answer
+                            input(disabled='' id='question2_5_1' type='radio' name='question2' value='По-разному')
+                            label(for='question2_5_1') По-разному
+                +e.question(data-type='2')
+                    +e.question-title Как занимаетесь бегом?
+                    +e.question-answers
+                        +e.question-answer
+                            input(disabled='' id='question2_1_2' type='radio' name='question2' value='Профессионально')
+                            label(for='question2_1_2') Профессионально
+                        +e.question-answer
+                            input(disabled='' id='question2_2_2' type='radio' name='question2' value='Для себя')
+                            label(for='question2_2_2') Для себя
+                        +e.question-answer
+                            input(disabled='' id='question2_3_2' type='radio' name='question2' value='Не знаю')
+                            label(for='question2_3_2') Не знаю
+                +e.question(data-type='3')
+                    +e.question-title Выберете проблему: <br><small>(Можно несколько вариантов)</small>
+                    +e.question-answers
+                        +e.question-answer
+                            input(disabled='' id='question3_1_3' type='checkbox' name='question2[]' value='Плоскостопие')
+                            label(for='question3_1_3') Плоскостопие
+                        +e.question-answer
+                            input(disabled='' id='question3_2_3' type='checkbox' name='question2[]' value='Боли в ногах и спине')
+                            label(for='question3_2_3') Боли в ногах и спине
+                        +e.question-answer
+                            input(disabled='' id='question3_3_3' type='checkbox' name='question2[]' value='Натоптыши и мозоли')
+                            label(for='question3_3_3') Натоптыши и мозоли
+                        +e.question-answer
+                            input(disabled='' id='question3_4_3' type='checkbox' name='question2[]' value='Вальгусная и варусная стопа')
+                            label(for='question3_4_3') Вальгусная и варусная стопа
+                        +e.question-answer
+                            input(disabled='' id='question3_5_3' type='checkbox' name='question3[]' value='Пяточная шпора')
+                            label(for='question3_5_3') Пяточная шпора
+                        +e.question-answer
+                            input(disabled='' id='question3_6_3' type='checkbox' name='question3[]' value='Грибок ногтя и стопы')
+                            label(for='question3_6_3') Грибок ногтя и стопы
+                        +e.question-answer
+                            input(disabled='' id='question3_7_3' type='checkbox' name='question3[]' value='Молоткообразные пальцы')
+                            label(for='question3_7_3') Молоткообразные пальцы
+                        +e.question-answer
+                            input(disabled='' id='question3_8_3' type='checkbox' name='question3[]' value='Диабетическая стопа')
+                            label(for='question3_8_3') Диабетическая стопа
+                        +e.question-answer
+                            input(disabled='' id='question3_9_3' type='checkbox' name='question3[]' value='Варикоз и отёки')
+                            label(for='question3_9_3') Варикоз и отёки
+                        +e.question-answer
+                            input(disabled='' id='question3_10_3' type='checkbox' name='question3[]' value='Длительная работа на ногах ')
+                            label(for='question3_10_3') Длительная работа на ногах 
+                        +e.question-answer
+                            input(disabled='' id='question3_11_3' type='checkbox' name='question3[]' value='Высокий свод стопы')
+                            label(for='question3_11_3') Высокий свод стопы 
+                        +e.question-answer
+                            input(disabled='' id='question3_12_3' type='checkbox' name='question3[]' value='Беременность ')
+                            label(for='question3_12_3') Беременность 
+                        +e.question-answer
+                            input(disabled='' id='question3_13_3' type='checkbox' name='question3[]' value='Не знаю')
+                            label(for='question3_13_3') Не знаю 
+            +e.step
+                +e.question(data-type='1')
+                    +e.question-title Чувствуете усталость или отек ног к вечеру?
+                    +e.question-answers
+                        +e.question-answer
+                            input(disabled='' id='question3_1_1' type='radio' name='question3' value='Да')
+                            label(for='question3_1_1') Да
+                        +e.question-answer
+                            input(disabled='' id='question3_2_1' type='radio' name='question3' value='Нет')
+                            label(for='question3_2_1') Нет
+                        +e.question-answer
+                            input(disabled='' id='question3_3_1' type='radio' name='question3' value='Иногда')
+                            label(for='question3_3_1') Иногда
+                +e.question(data-type='2')
+                    +e.question-title Были ли травмы?
+                    +e.question-answers
+                        +e.question-answer
+                            input(disabled='' id='question3_1_2' type='radio' name='question3' value='Да')
+                            label(for='question3_1_2') Да
+                        +e.question-answer
+                            input(disabled='' id='question3_2_2' type='radio' name='question3' value='Нет')
+                            label(for='question3_2_2') Нет
+            +e.step
+                +e.question(data-type='common')
+                    +e.question-title Как срочно Вам нужно изготовление?
+                    +e.question-answers
+                        +e.question-answer
+                            input(disabled='' id='question4_1_1' type='radio' name='question4' value='Как можно быстрее')
+                            label(for='question4_1_1') Как можно быстрее
+                        +e.question-answer
+                            input(disabled='' id='question4_2_1' type='radio' name='question4' value='В ближайшие 2 дня')
+                            label(for='question4_2_1') В ближайшие 2 дня
+                        +e.question-answer
+                            input(disabled='' id='question4_3_1' type='radio' name='question4' value='В ближайшую неделю')
+                            label(for='question4_3_1') В ближайшую неделю
+                        +e.question-answer
+                            input(disabled='' id='question4_4_1' type='radio' name='question4' value='В течении месяца')
+                            label(for='question4_4_1') В течении месяца
+                        +e.question-answer
+                            input(disabled='' id='question4_5_1' type='radio' name='question4' value='Более месяца')
+                            label(for='question4_5_1') Более месяца
+            +e.step
+                +e.question(data-type='common')
+                    +e.question-title Нужна консультация ортопеда?
+                    +e.question-answers
+                        +e.question-answer
+                            input(id='question5_1_1' type='radio' name='question5' value='Да')
+                            label(for='question5_1_1') Да
+                        +e.question-answer
+                            input(id='question5_2_1' type='radio' name='question5' value='Нет')
+                            label(for='question5_2_1') Нет
+            +e.step
+                +e.final(data-type='final' style='display: block')
+                    +e.final-title Заполните форму и получите результаты, какие стельки подойдут именно Вам:)
+                    //- +e.P.final-text Впишите ваш телефон и мы свяжемся с вами как можно скорее
+                    +e.final-phone
+                        input(type='text' name='tel' required="required" placeholder="Ваш номер телефона")
+                    +e.BUTTON.submit(type='submit') Получить результаты
         +inner
             +e.controls
                 +e.BUTTON.control.__previous(disabled='') Назад
