@@ -34,7 +34,7 @@ $(window).on('load', function () {
 
     var placemarkOptions = {
         iconLayout: 'default#image',
-        iconImageHref: '/images/icons/map-icon.png',
+        iconImageHref: 'images/icons/map-icon.png',
         iconImageSize: [30, 30],
         iconImageOffset: [-15, -30],
     };
